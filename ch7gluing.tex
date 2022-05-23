@@ -1,0 +1,378 @@
+\section{Gluing Parameters} \label{glueS}
+
+Fix a topological type $(g,h)$ of curve and let $\Nbar$ be the moduli space described in Section~\ref{baseS}. 
+Our goal now is to determine the relationship between invariants of the bundle $Ob \arr \Nbar$ we built in Section~\ref{obS} and the contribution of curves in $\N$ to Gromov-Witten invariants. We perturb the equation $\delbar u = 0$ and count the resulting solutions. More precisely, fix some section $\nu$ of the bundle of $(0,1)$-forms over $\N$. Our goal is to count those $P \in \Nbar$ which perturb to a $t\nu$-holomorphic map for all small $t$.
+
+We would like to view the solution space as the zero locus of a generic section of a bundle. Unfortunately, the rank of the obstruction bundle is too large: in the cell associated to a particular partition, we have $\rk_\R(Ob)=3\tilde{g}$ but $\dim_\R(\N)=3\tilde{g}-[(2r)+q]$ (where $\tilde{g}=2g+h-1$ is the genus of the double, $r$ is the number of closed ghost branches, and $q$ is the number of open ghost branches). Thus for each ghost branch we must introduce an extra line bundle (complex for interior nodes and real for boundary nodes) in order to resolve this difference.
+
+This bundle will consist of gluing parameters, which give ways to smooth out nodes to yield new (non-holomorphic) curves. In this section we construct the bundle; in Section~\ref{lotS} we will examine its relationship to the contribution we wish to compute.
+
+\begin{definition}
+Fix a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$ of some topological type $(g,h)$.
+
+For $1 \leq i \leq r$, the \emph{bundle of (complex) gluing parameters for the $i^{\text{th}}$ node} is $\L_i = T\Sigma_0 \boxtimes_\C \mathcal{T}_{g_i,1}$, where $\mathcal{T}_{g_i,1}$ is the relative tangent bundle over $\Mbar_{g_i,1}$.
+
+For $r+1\leq i \leq r+q$, set $\sigma_i=((g_i,h_i),0,(1,0,\ldots,0))$. The \emph{bundle of (real) gluing parameters for the $i^{\text{th}}$ node} is $\L_i = T\partial\Sigma_0 \boxtimes_\R \mathcal{T}_{\sigma_i}$, where $\mathcal{T}_{\sigma_i}$ is the relative tangent bundle over $\Mbar_{\sigma_i}$. A gluing parameter $\tau_0 \otimes_\R \tau_1 \in T_{z_i}\partial\Sigma_0 \otimes_\R T_{y_i}\partial\Sigma_i$ is \emph{positive} if $-j(\tau_0) \in T_z\Sigma_0$ and $j(\tau_1) \in T_y\Sigma_1$ are both inward pointing or both outward pointing.
+
+The \emph{bundle of gluing parameters} over $\Nbar_\lambda$ is
+\[
+\L_\lambda = \bigoplus\limits_{i=1}^{r+q} \L_i.
+\]
+
+The \emph{bundle of gluing parameters} $\pi_\L:\L\arr\Nbar$ is obtained by attaching the bundles over the cells along intersections. The fiber $\L_i$ is identified with the normal direction along the moduli space of curves whose $i^{\text{th}}$ node has been smoothed, or perpendicular to the zero section if such a smoothed curve does not lie in $\Nbar$ (see Remark~\ref{howToGlue}).
+\end{definition}
+
+\begin{remark} \label{howToGlue}
+We see that $\L_i$ is a complex line bundle whose fiber over $(u,\Sigma)$ is $T_{z_i}\Sigma_0 \otimes_\C T_{y_i}\Sigma_i$ when $i \leq r$ and a real line bundle whose fiber over $(u,\Sigma)$ is $T_{z_i}\partial\Sigma_0 \otimes_\R T_{y_i}\partial\Sigma_i$ when $i>r$.
+
+Here we explain how to attach the bundles $\L_{\lambda}$ so that the total space of $\L \arr \Nbar$ has constant dimension equal to the rank of the obstruction bundle. Over any individual cell this dimension criterion is clearly satisfied; all that remains is to examine cell intersections.
+
+Consider a set $A=\{\lambda_1,\ldots,\lambda_k\}$ of partitions and an intersection $\Nbar_A= \bigcap_{\lambda \in A} \Nbar_{\lambda}$ of cells. We need to attach the bundles $\L_\lambda$ over this intersection. See Examples~\ref{glueEx11}, \ref{closedCollGlue}, and \ref{int4glue} for concrete interpretations.
+
+First, we identify fibers of gluing parameters whenever nodes are identified. That is, all ghosts except those involved in the collision will be identified in a straightforward manner. After dividing $\bigoplus_{\lambda \in A} \L_{\lambda}$ by this equivalence, we are left with exactly one copy of $\C$ for each interior node and one copy of $\R$ for each boundary node in a generic curve in $\Nbar_A$ (note that this may include nodes outside of $\Sigma_0$, which are ignored throughout the rest of this paper).
+
+Lemma~\ref{glue} gives instructions for identifying smoothing parameters with maps. A complex gluing parameter can be used to smooth an interior node, and a real gluing parameter can be used to smooth a boundary node. If smoothing the $i^{\text{th}}$ node yields a curve in $\bigcap_{\lambda \in A'} \Nbar_{\lambda}$ for $A' \subset A$, we attach the fiber of $\L_i$ along the normal bundle to $\Nbar_A$ in $\Nbar_{A'}$. Otherwise, we leave it as a fiber of $\L$. Since every direction perpendicular to $\Nbar_A$ in $\Nbar$ is obtained by smoothing at least one node, we see that a neighborhood of $\Nbar_A$ in $\L$ has dimension $\rk_\R(Ob)$.
+\end{remark}
+
+\begin{example} \label{glueEx11}
+We return to the case presented in Section~\ref{11s} to understand gluing parameters over intersections arising from collision with $\partial\Sigma_0$. The intersection $\Nbar_{1,1} \cap \Nbar_\sigma$ has real dimension three. Fix $(u,\Sigma) \in \Nbar_{1,1} \cap \Nbar_\sigma$ with ghost $\rho_{1}([\Sigma_{1,1},y_{1,1}])=[\Sigma_\sigma,y_\sigma]$ attached at $z \in \Sigma_0$. Then the direct sum of fibers is
+\[
+(\L_{1,1})_u \oplus (\L_{\sigma})_u = \C_u \oplus \R_u,
+\]
+where
+\begin{align*}
+\C_u & = T_z\Sigma_0 \otimes_\C T_{y_{1,1}}\Sigma_{1,1}
+\\
+\R_u & = T_z\partial\Sigma_0 \otimes_\R T_{y_\sigma}\partial\Sigma_\sigma.
+\end{align*}
+We can split
+\[
+T\Nbar|_{\Nbar_{1,1} \cap \Nbar_\sigma} \cong T(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus V_{1,1} \oplus V_\sigma,
+\]
+where $V_{1,1}$ is the normal bundle to $\Nbar_{1,1} \cap \Nbar_\sigma$ in $\Nbar_{1,1}$ and $V_\Sigma$ is the normal bundle to $\Nbar_{1,1} \cap \Nbar_\sigma$ in $\Nbar_\sigma$. Observe that $\dim_\R(V_{1,1})=1$ and $\dim_\C(V_\sigma)=1$; we wish to identify these bundles with $\R_u$ and $\C_u$, respectively.
+
+Lemma~\ref{glue11} gives instructions for identifying smoothing parameters with maps. A complex gluing parameter $\tau \in \C_u$ can be used to smooth the interior node of $\Sigma$, and a real gluing parameter $\tau \in \R_u$ can be used to smooth the boundary node of $\Sigma$ (see Figure~\ref{pic11sigma}). Thus we can identify 
+\begin{align*}
+T_u\Nbar_{1,1} & \cong T_u(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus \R_u
+\\
+T_u\Nbar_\sigma & \cong T_u(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus \C_u.
+\end{align*}
+This process allows us to build the bundle $\L$ of gluing parameters over all of $\Nbar$. Although $\Nbar$ has two pieces of different dimensions, the total space of $\L$ has constant real dimension $6$ (which is also the real rank of the obstruction bundle).
+\end{example}
+
+\begin{example} \label{closedCollGlue}
+In order to understand what happens to gluing parameters when ghosts collide, consider the case where $(g,h)=(4,1)$, $\lambda_1=(g_1=1,g_2=2,(g_3=1,h_3=1))$, and $\lambda_2=(g_1=3,(g_2=1,h_2=1))$. Label the nodes as in Figure~\ref{pic31two}. 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{1.5}
+\def\h{1.2}
+\def\w{0.8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\coordinate (c1) at (0,0);
+\disk[](c1)(\r)(\r);
+
+\coordinate (Lnode1) at (-0.6*\r,0.8*\r);
+\node [below right] at (Lnode1) {$a$};
+\torus[](Lnode1)(30)(\h);
+
+\coordinate (Rnode1) at (0.6*\r,0.8*\r);
+\node [below left] at (Rnode1) {$b$};
+\closedGhost[](Rnode1)(-30)(\w)(\h)(2);
+
+\coordinate (Bnode1) at (\r,0);
+\node [below] at (Bnode1) {$c$};
+\openGhost[](Bnode1)(0.5*\r)(0.75*\r)(1)();
+\begin{scope}[shift={(Bnode1)}]
+	\addGenus[](0.5*\r,0.3*\r)(0)(0.25);
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\coordinate (c2) at (6,0);
+\disk[](c2)(\r)(\r);
+
+\coordinate (node2) at ($(c2)+(0,\r)$);
+\node [below] at (node2) {$d$};
+\closedGhost[](node2)(0)(\w)(\h)(3);
+
+\coordinate (Bnode2) at ($(c2)+(\r,0)$);
+\node [below] at (Bnode2) {$e$};
+\openGhost[](Bnode2)(0.5*\r)(0.75*\r)(1)();
+\begin{scope}[shift={(Bnode2)}]
+	\addGenus[](0.5*\r,0.3*\r)(0)(0.25);
+\end{scope}
+
+\end{tikzpicture}
+\caption{Two curves of type $(4,1)$.}
+\label{pic31two}
+\end{figure}
+
+We examine the intersection $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$, which is precisely the set of curves $(u,\Sigma) \in \Nbar_{\lambda_1}$ where the two ghost curves $(\Sigma_1,y_1)$ and $(\Sigma_2,y_2)$ collide at $z_1=z_2$ (see Figure~\ref{pic31coll}).
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{1.5}
+\def\rb{1}
+\def\h{1.2}
+\def\w{0.8}
+
+\coordinate (c1) at (0,0);
+\disk[](c1)(\r)(\r);
+
+\coordinate (c2) at (0,\r+\rb);
+\coordinate (node2) at ($(c2)+(0,-\rb)$);
+\node at (node2) {$\bullet$};
+\node [below] at (node2) {$d$};
+\sphere[](c2)(\rb)(\rb);
+
+\coordinate (Lnode1) at ($(c2)+(-0.6*\rb,0.8*\rb)$);
+\node [below right] at (Lnode1) {$a$};
+\torus[](Lnode1)(30)(\h);
+
+\coordinate (Rnode1) at ($(c2)+(0.6*\rb,0.8*\rb)$);
+\node [below left] at (Rnode1) {$b$};
+\closedGhost[](Rnode1)(-30)(\w)(\h)(2);
+
+\coordinate (Bnode1) at (\r,0);
+\node [below] at (Bnode1) {$c=e$};
+\openGhost[](Bnode1)(0.5*\r)(0.75*\r)(1)();
+\begin{scope}[shift={(Bnode1)}]
+	\addGenus[](0.5*\r,0.3*\r)(0)(0.25);
+\end{scope}
+
+\end{tikzpicture}
+\caption{A curve in $\Nbar_{(1,2,(1,1))} \cap \Nbar_{(3,(1,1))}$.}
+\label{pic31coll}
+\end{figure}
+
+We begin with the direct sum of gluing parameters from $\Nbar_{\lambda_1}$ and $\Nbar_{\lambda_2}$:
+\[
+(\L_{\lambda_1})_u \oplus (\L_{\lambda_2})_u = (\C_a \oplus \C_b \oplus \R_c) \oplus (\C_d \oplus \R_e).
+\]
+The ghosts which are not involved in the collision are matched in a straightforward manner, so we first identify $\R_c$ with $\R_e$. Smoothing this node in a curve in $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ does not yield a curve in $\Nbar$, so this fiber will be perpendicular to the zero section in $\L$.
+
+Smoothing node $d$ gives a curve in $\Nbar_{\lambda_1}$, and since $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ has real codimension $2$ in $\Nbar_{\lambda_1}$ it makes sense to identify $\C_d$ with the normal bundle $V_1$ (using Lemma~\ref{glue}). Similarly, curves such as $u$ exist in a real codimension $4$ subset of $\Nbar_{\lambda_2}$, so it makes sense to identify the gluing parameters $\C_a \oplus \C_b$ with the bundle $V_2$ normal to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ in $\Nbar_{\lambda_2}$. Now
+\[
+T_u\L \cong T_u(\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}) \oplus (V_1)_u \oplus (V_2)_u \oplus \R_c.
+\]
+We compute
+\[
+\begin{array}{rclcrcl}
+\dim_\R(\Nbar_{\lambda_1}) & = & 19 & \qquad\qquad & \dim_\R(\Nbar_{\lambda_2}) & = & 21
+\\
+\dim_\R(\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}) & = & 17 && \codim_\R(\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2},\Nbar_{\lambda_1}) & = & 2
+\\
+\codim_\R(\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2},\Nbar_{\lambda_2}) & = & 4 && \dim_\R(\R_c) & = & 1.
+\end{array}
+\]
+Therefore a neighborhood of $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ in $\L$ has dimension
+\begin{align*}
+17+2+4+1 = 24 = \rk_\R(Ob).
+\end{align*}
+\end{example}
+
+\begin{example} \label{int4glue}
+We examine gluing parameters over the intersection $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2} \cap \Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ described in Example~\ref{int4moduli}. Label the nodes on curves in $\Nbar_{\lambda_1}$, $\Nbar_{\lambda_2}$, $\Nbar_{\lambda_3}$, and $\Nbar_{\lambda_4}$ as in Figure~\ref{picFour}. The fibers of $\L_{\lambda_1}$, $\L_{\lambda_2}$, $\L_{\lambda_3}$, and $\L_{\lambda_4}$ are $\C_a \oplus \C_b$, $\C_{b'} \oplus \R_c$, $\C_{a'} \oplus \R_d$, and $\R_{c'} \oplus \R_{d'}$, respectively.
+
+We first examine pairwise intersections. Over $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$, we have fibers $\C_a \oplus \C_b$ and $\C_{b'} \oplus \R_c$. Since nodes $b$ and $b'$ are not involved in the collision, we identify their fibers, leaving one gluing parameter per node: $\C_a \oplus \C_b \oplus \R_c$. Smoothing $b=b'$ does not yield a curve in $\Nbar$, so $\C_b=\C_{b'}$ will be perpendicular to the zero section in $\L$. Smoothing $a$ yields a curve in $\Nbar_{\lambda_2}$, so $\C_a$ is identified with the normal bundle to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ in $\Nbar_{\lambda_2}$. Smoothing $c$ yields a curve in $\Nbar_{\lambda_1}$, so $\R_c$ is identified with the normal bundle to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$ in $\Nbar_{\lambda_1}$.
+
+Similarly, over $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_3}$ the fiber $\C_a=\C_{a'}$ is perpendicular to the zero section in $\L$, $\C_b$ is normal to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_3}$ in $\Nbar_{\lambda_3}$, and $\R_d$ is normal to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_3}$ in $\Nbar_{\lambda_1}$. Over $\Nbar_{\lambda_2} \cap \Nbar_{\lambda_4}$ the fiber $\R_c=\R_{c'}$ is perpendicular to the zero section in $\L$, $\C_{b'}$ is normal to $\Nbar_{\lambda_2} \cap \Nbar_{\lambda_4}$ in $\Nbar_{\lambda_4}$, and $\R_{d'}$ is normal to $\Nbar_{\lambda_2} \cap \Nbar_{\lambda_4}$ in $\Nbar_{\lambda_2}$. Over $\Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ the fiber $\R_d=\R_{d'}$ is perpendicular to the zero section in $\L$, $\C_{a'}$ is normal to $\Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ in $\Nbar_{\lambda_4}$, and $\R_{c'}$ is normal to $\Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ in $\Nbar_{\lambda_3}$.
+
+
+We now proceed to the intersection of all four cells. 
+We begin with the direct sum of gluing parameters the four cells:
+\[
+(\C_a \oplus \C_b) \oplus (\C_{b'} \oplus \R_c) \oplus (\C_{a'} \oplus \R_d) \oplus (\R_{c'} \oplus \R_{d'}).
+\]
+We first identify fibers for nodes which are matched: $\C_a=\C_{a'}$, $\C_b=\C_{b'}$, $\R_c=\R_{c'}$, and $\R_d=\R_{d'}$. These four fiber directions are identified with the normal bundles to $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}  \cap \Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ in $\Nbar_{\lambda_2} \cap \Nbar_{\lambda_4}$, $\Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$, $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_3}$, and $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}$, respectively (see Table~\ref{table4int}). These are the only possible directions of movement in $\Nbar$, so a neighborhood of $\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}  \cap \Nbar_{\lambda_3} \cap \Nbar_{\lambda_4}$ in $\L$ has dimension
+\[
+\dim_\R(\Nbar_{\lambda_1} \cap \Nbar_{\lambda_2}  \cap \Nbar_{\lambda_3} \cap \Nbar_{\lambda_4})+2+2+1+1=18=\rk_\R(Ob).
+\]
+\end{example}
+
+\begin{remark}
+All cell intersections can be seen as straightforward ghost collisions in the complex double of the curve. For example, if an interior ghost collides with a boundary ghost, in the complex double we see this interior ghost collide simultaneously with its complex conjugate and a ghost attached along the real locus. Therefore, the principles explained in Example~\ref{int4glue} can be extended to all non-basic intersections.
+\end{remark}
+
+While smoothing a given curve, we choose some small constant $R_0>0$ which satisfies all the hypotheses for gluing in \cite{dw}. We also add the hypothesis that $R_0$ is small enough to guarantee that the ball of radius $4R_0$ around any interior node $z \in \Sigma_0\setminus\partial\Sigma_0$ does not intersect $\partial\Sigma_0$.
+
+\begin{lemma} \label{glue}
+Fix a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$ of some topological type $(g,h)$. For $(u,\Sigma)$ in the top stratum of $\Nbar_\lambda$, fix an element $\tau=(\tau_1,\ldots,\tau_{r+q})$ of the fiber $\L_{(u,\Sigma)}$ and assume
+\begin{enumerate}[(i)]
+\item $|\tau|<R_0$, and
+\item $\tau_i$ is positive for $r+1 \leq i \leq r+q$.
+\end{enumerate}
+Then $\tau$ yields a Riemann surface $(\Sigma_\tau,j_\tau)$ and a smooth map $\tilde{u}_\tau:(\Sigma_\tau,\partial\Sigma_\tau) \arr (M,L)$ such that $\norm{\delbar(\tilde{u}_\tau)}_{L^p}$ is small in the sense of Proposition~5.8 of \cite{dw}.
+\begin{proof}
+For $1 \leq i \leq r$, we can use $\tau_i$ to smooth the node $z_i \sim y_i$ as in \cite{dw}. Because the domain and map are only altered near the node, the analysis in Sections~4.2 and 5.2 of \cite{dw} still applies.
+
+However, we must take care when the node sits in $\partial\Sigma_0$. We may apply the results of \cite{dw} only to the double of the curve in the case of a boundary node.
+
+Fix $(u,\Sigma) \in \Nbar_\lambda$ and let $(\Sigma^{(\C)},c,\pi)$ be the complex double of $\Sigma$ (see Definition~\ref{cplxDouble}). Choose a metric on $\Sigma^{(\C)}$ so that the fixed locus of the involution $c$ is totally geodesic. Then we can write
+\[
+\Sigma^{(\C)} = \left. \left( \bigsqcup\limits_{i=0}^{r+q} \Sigma_i^{(\C)} \right) \middle/ \left( z_i \sim y_i \right) \right. .
+\]
+
+We must analyze smoothings of $\Sigma^{(\C)}$ to understand smoothings of $\Sigma$. We focus here on the $i^{\text{th}}$ node for some $i>r$. Gluing parameters for the node $z_i \sim y_i$ in $\Sigma^{(\C)}$ are (small) elements of $T_{z_i}\Sigma_0^{(\C)} \otimes_\C T_{y_i}\Sigma_i^{(\C)}$. We smooth the $i^{\text{th}}$ node of $\Sigma^{(\C)}$ by removing small neighborhoods of $z_i$ and $y_i$ from $\Sigma_0^{\C}$ and $\Sigma_i^{\C}$, respectively, and then identifying small collars $A_{z_i}$ and $A_{y_i}$ around these removed neighborhoods via a map $\iota_{\tau_i}$ (see Figure~\ref{collars}).
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{2}
+\def\w{0.6*\r}
+
+% sigma0
+\coordinate (sigma0) at (-1,0);
+
+\begin{scope}[shift=(sigma0)]
+	\draw (0,0) circle (\r);
+	\draw [thick, bend right = 15] (-\r,0) to (\r,0);
+\end{scope}
+
+% collar0
+\begin{scope}[shift=(sigma0)]
+    % erase part of sphere
+	\draw [white, fill=white] (1.8,-0.872) to [bend left=20] (1.8,0.872) -- (2.1,1) -- (2.1,-1) -- cycle;
+	
+	% draw edges of collar
+	\draw (1.8,-0.872) to [bend right=5] (1.8,0.872);
+	\draw (1.8,-0.872) to [bend left=20] (1.8,0.872);
+	\draw (1.6,-1.2) to [bend left=20] (1.6,1.2);
+\end{scope}
+\begin{scope}[shift=(sigma0)]
+    % fill collar
+	\clip (sigma0) circle (\r);
+	\draw [pattern = north east lines] (1.8,-0.872) to [bend left=20] (1.8,0.872) to [bend right=50] (1.6,1.2) to [bend right=20] (1.6,-1.2) to [bend right=50] cycle;
+\end{scope}
+\node [below right] at ($(sigma0)+(1.7,-0.872)$) {$A_{z_i}$};
+
+% sigma1
+\coordinate (sigma1) at (4,0);
+\begin{scope}[shift=(sigma1)]
+	\draw (0,0) ellipse ({\w} and {\r});
+	\draw [thick, bend right = 15] (-\w,0) to (\w,0);
+	\addGenus[](0,0.375*\r)(20)(0.5);
+	\addGenus[](0,-0.375*\r)(160)(0.5);
+\end{scope}
+
+% collar1
+\begin{scope}[shift={(-\w+0.2,0)}]
+    % erase part of surface
+    \draw [white, fill=white] (3.92,-0.872) to [bend right=20] (3.92,0.872) -- (3.7,1) -- (3.7,-1) -- cycle;
+    
+    % draw edges of collar
+    \draw (3.92,-0.872) to [bend left=5] (3.92,0.872);
+    \draw (3.92,-0.872) to [bend right=20] (3.92,0.872);
+    \draw (4.04,-1.2) to [bend right=20] (4.04,1.2);
+\end{scope}
+\begin{scope}[shift={(-\w+0.2,0)}]
+    \node [below left] at (3.92,-0.872) {$A_{y_i}$};
+    % fill collar
+    \clip (sigma1) ellipse ({\w} and {\r});
+    \draw [pattern = north east lines] (3.92,-0.872) to [bend right=20] (3.92,0.872) to [bend left=50] (4.04,1.2) to [bend left=20] (4.04,-1.2) to [bend left=50] cycle;
+    \node [below left] at (3.92,-0.872) {$A_{y_i}$};
+\end{scope}
+
+\end{tikzpicture}
+\caption{Collars near nodes.}
+\label{collars}
+\end{figure}
+
+If $\tau_i=\tau_{z_i} \otimes_\C \tau_{y_i} \in T_{z_i}\Sigma_0 \otimes_\C T_{y_i}\Sigma_i$, then
+\[
+v \otimes_\C (\exp_{y_i}^{-1} \circ \iota_{\tau_i} \circ \exp_{z_i}(v)) = \tau_{z_i} \otimes_\C \tau_{y_i}
+\]
+for all $v \in T_{z_i}\Sigma_0$. In particular, $\iota_{\tau_i}(\exp_{z_i}(t\tau_{z_i}))=\exp_{y_i}(\tfrac{1}{t}\tau_{y_i})$ and $\iota_{\tau_i}(\exp_{z_i}(-j(t\tau_{z_i})))=\exp_{y_i}(j(\tfrac{1}{t}\tau_{y_i}))$ (see Figure~\ref{iota}).
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\d{1}
+\def\w{1}
+\def\r{3}
+\def\h{2}
+
+% collar0
+\draw (-\d,-1) to [bend right=10] (-\d,1);
+\draw (-\d,-1) to [bend left=15] (-\d,1);
+\draw [dashed] (-\d-\w,-1) to [bend right=10] (-\d-\w,1);
+\draw (-\d-\w,-1) to [bend left=15] (-\d-\w,1);
+\draw (-\d-\w,-1) -- (-\d,-1);
+\draw (-\d-\w,1) -- (-\d,1);
+\node at (-\d-0.75*\w,0.4) {$\bullet$};
+\node [left] at (-\d-\w,0.4) {$\exp_{z_i}(-j(s\tau_{z_i}))$};
+\node at (-\d-0.25*\w,-0.8) {$\bullet$};
+\node [below] at (-\d-0.25*\w,-0.9) {$\exp_{z_i}(t\tau_{z_i})$};
+\node at (-\d-0.5*\w,-2) {$A_{z_i}$};
+
+% tan0
+\coordinate (center0) at (-\r-3,-\h);
+\coordinate (jt0) at ($(center0)+(-0.2,0.5)$);
+\coordinate (t0) at ($(center0)+(-0.4,-0.4)$);
+\draw [->] (center0) to (t0);
+\draw [->] (center0) to (jt0);
+\node [below] at (t0) {$\tau_{z_i}$};
+\node [above] at (jt0) {$-j(\tau_{z_i})$};
+\draw ($(center0)+(-1,-2)$) -- ($(center0)+(-1,1)$) -- ($(center0)+(1,2)$) -- ($(center0)+(1,-1)$) -- cycle;
+\node at ($(center0)+(0,-2)$) {$T_{z_i}\Sigma_0$};
+
+% exp0
+\coordinate (arrow0) at ($0.5*(center0)+0.5*(-\d,0)$);
+\draw [->] ($(arrow0)+(-0.75,-0.25)$) to [bend left] ($(arrow0)+(0.75,0.25)$);
+\node [above left] at ($(arrow0)+(0,0.1)$) {$\exp_{z_i}$};
+
+% collar1
+\draw [dashed] (\d,-1) to [bend right=10] (\d,1);
+\draw (\d,-1) to [bend left=15] (\d,1);
+\draw (\d+\w,-1) to [bend right=10] (\d+\w,1);
+\draw (\d+\w,-1) to [bend left=15] (\d+\w,1);
+\draw (\d+\w,-1) -- (\d,-1);
+\draw (\d+\w,1) -- (\d,1);
+\node at (\d+0.25*\w,0.4) {$\bullet$};
+\node [right] at (\d+\w,0.4) {$\exp_{y_i}(j(\tfrac{1}{s}\tau_{y_i}))$};
+\node at (\d+0.75*\w,-0.8) {$\bullet$};
+\node [below] at (\d+0.75*\w,-0.9) {$\exp_{y_i}(\tfrac{1}{t}\tau_{y_i})$};
+\node at (\d+0.5*\w,-2) {$A_{y_i}$};
+
+% tan1
+\coordinate (center1) at (\r+3,-\h);
+\coordinate (jt1) at ($(center1)+(0.2,0.5)$);
+\coordinate (t1) at ($(center1)+(0.4,-0.4)$);
+\draw [->] (center1) to (t1);
+\draw [->] (center1) to (jt1);
+\node [below] at (t1) {$\tau_{y_i}$};
+\node [above] at (jt1) {$j(\tau_{y_i})$};
+\draw ($(center1)+(1,-2)$) -- ($(center1)+(1,1)$) -- ($(center1)+(-1,2)$) -- ($(center1)+(-1,-1)$) -- cycle;
+\node at ($(center1)+(0,-2)$) {$T_{y_i}\Sigma_i$};
+
+% exp1
+\coordinate (arrow1) at ($0.5*(center1)+0.5*(\d,0)$);
+\draw [->] ($(arrow1)+(0.75,-0.25)$) to [bend right] ($(arrow1)+(-0.75,0.25)$);
+\node [above right] at ($(arrow1)+(0,0.1)$) {$\exp_{y_i}$};
+
+% iota
+\draw [<->] (-0.5*\d,0) -- (0.5*\d,0);
+\node [above] at (0,0) {$\iota_{\tau_i}$};
+
+\end{tikzpicture}
+\caption{Identifying collars via $\tau_i$.}
+\label{iota}
+\end{figure}
+
+Now we must determine whether this smoothing of $\Sigma^{(\C)}$ yields a smoothing of $\Sigma$ near the $i^{\text{th}}$ node. The doubled curve $\Sigma^{(\C)}$ is equipped with an anti-holomorphic involution $c$ and a double cover $\pi:\Sigma^{(\C)}\arr\Sigma$. In order for the smoothing of $\Sigma^{(\C)}$ to yield a smoothing of $\Sigma$, the smoothing must respect these structures. That is, when we identify the $i^{\text{th}}$ collars in $\Sigma_0^{(\C)}$ and $\Sigma_i^{(\C)}$, the halves of the collars which lie in $\Sigma_0$ and $\Sigma_i$ must be identified. This occurs precisely when the gluing parameter $\tau_i$ lies in the positive half of the real locus of $T_{z_i}\Sigma_0^{(\C)} \otimes_\C T_{y_i}\Sigma_i^{(\C)}$.
+
+Indeed, the smoothing $\Sigma_\tau^{\C}$ yields a smoothing of the $i^{\text{th}}$ node of $\Sigma$ precisely when
+\[
+\iota_{\tau_i}(A_{z_i} \cap \Sigma_0)=A_{y_i} \cap \Sigma_i.
+\]
+If $\tau_i=\tau_{z_i} \otimes_\C \tau_{y_i}$, we can assume without loss of generality that $\tau_{y_i}$ is tangent to the fixed locus $\text{Fix}(c)$ and that $j(\tau_{y_i})$ points inward along $\Sigma_i$. It follows that $\exp_{y_i}(\tfrac{1}{t}\tau_{y_i})$ must lie in the fixed locus and that $\exp_{y_i}(j(\tfrac{1}{t}\tau_{y_i}))$ must lie in $\Sigma_i$ (for appropriate values $t \in \R^+$). Since these two points are identified under $\iota_{\tau_i}$ with $\exp_{z_i}(t\tau_{z_i})$ and $\exp_{z_i}(-j(t\tau_{z_i}))$, respectively, we can smooth the $i^{\text{th}}$ node of $\Sigma$ via $\tau_i$ precisely when $\tau_{z_i}$ is also tangent to $\text{Fix}(c)$ and $-j(\tau_{z_i})$ is inward pointing along $\Sigma_0$. When we embed $\Sigma \arr \Sigma^{(\C)}$, we see that $\text{Fix}(c)$ is the image of $\partial\Sigma$, so a smoothing of $\Sigma_\tau^{(\C)}$ yields a smoothing of the $i^{\text{th}}$ node of $\Sigma$ if and only if the gluing parameter lies in the positive part of $T_{z_i}\partial\Sigma_0 \otimes_\R T_{y_i}\partial\Sigma_i$.
+
+When $\tau$ satisfies the hypotheses of this lemma, let $(\Sigma_\tau,\partial\Sigma_\tau)$ be the smoothed domain. We define a smoothed map $u_\tau:(\Sigma_\tau,\partial\Sigma_\tau)\arr(M,L)$ precisely as in \cite{dw}. This map still sends $\partial\Sigma$ to $L$ because $L$ is totally geodesic. It is evident from the construction that the estimates computed in \cite{dw} still apply.
+\end{proof}
+\end{lemma}

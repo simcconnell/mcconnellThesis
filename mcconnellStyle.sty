@@ -1,0 +1,279 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% This style package has the following sections:
+% Packages
+% Page Format
+% Theorem Environments
+% Commands
+% Illustrations
+% Symbol Table
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%-------Packages---------
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{ifthen}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta,backgrounds,calc,cd,decorations.pathmorphing,fit,patterns,positioning}
+
+\pgfplotsset{compat=1.15}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+
+\usepackage[
+  backend=biber,
+  hyperref=false,
+  url=false,
+  backref=false,
+  isbn=false,
+  doi=false,
+  eprint=true,
+  useprefix=true,
+  maxcitenames=99,
+  maxbibnames=99,  
+  maxalphanames=99, 
+  minalphanames=99,
+  safeinputenc,
+  style=alphabetic,
+  citestyle=alphabetic,
+  block=space,
+  datamodel=preamble/ext-eprint
+]{biblatex}
+\addbibresource{openGW.bib}
+
+%-------Page Format---------
+
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\setlength{\footskip}{24pt}
+
+% remove date from footer
+\makeatletter
+\patchcmd{\@maketitle}
+  {\ifx\@empty\@dedicatory}
+  {\ifx\@empty\@date \else {\vskip3ex \centering\footnotesize\@date\par\vskip1ex}\fi
+   \ifx\@empty\@dedicatory}
+  {}{}
+\patchcmd{\@adminfootnotes}
+  {\ifx\@empty\@date\else \@footnotetext{\@setdate}\fi}
+  {}{}{}
+\makeatother
+
+\setcounter{tocdepth}{1}
+
+\counterwithin{figure}{section}
+
+%-------Theorem Environments---------
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{remark}[theorem]{Remark}
+
+%-------Commands---------
+
+\newcommand{\nc}{\newcommand}
+
+\nc{\C}{\mathbb{C}}
+\nc{\E}{\mathbb{E}}
+\renewcommand{\L}{\mathcal{L}}
+\nc{\M}{\mathcal{M}}
+\nc{\N}{\mathcal{N}}
+\nc{\Q}{\mathbb{Q}}
+\nc{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\nc{\X}{\mathcal{X}}
+\nc{\Z}{\mathbb{Z}}
+
+\nc{\Mbar}{\ov{\M}}
+\nc{\Nbar}{\ov{\N}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\nc{\ep}{\epsilon}
+
+\nc{\arr}{\rightarrow}
+
+\renewcommand{\hat}{\widehat}
+
+\nc{\oo}{\infty}
+
+\nc{\f}[2]{\frac{#1}{#2}}
+\nc{\df}[2]{\dfrac{#1}{#2}}
+
+\nc{\rt}[1]{\sqrt{#1}}
+
+\nc{\ov}[1]{\overline{#1}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\nc{\dlim}[1]{\lim\limits_{#1}}
+\nc{\limto}[2]{\dlim{{#1} \arr {#2}}}
+
+\nc{\sumto}[2]{\sum\limits_{#1}^{#2}}
+\nc{\prodto}[2]{\prod\limits_{#1}^{#2}}
+
+\nc{\dint}{\displaystyle\int}
+
+\nc{\delbar}{\ov{\partial}}
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\ind}{index}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\pd}{PD}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\spnw}{span}
+
+%-------Illustrations---------
+
+\nc\sphere{}
+\def\sphere[#1](#2)(#3)(#4){
+    % \sphere[draw options](position)(x-radius)(y-radius)
+    \begin{scope}[shift={(#2)}]
+        \def\xRadius{#3}
+        \def\yRadius{#4}
+	    \draw[#1] (-\xRadius,0) to [bend right=15] (\xRadius,0);
+	    \draw[#1] [dashed] (-\xRadius,0) to [bend left=10] (\xRadius,0);
+	    \draw[#1] (0,0) ellipse ({\xRadius} and {\yRadius});
+    \end{scope} 
+}
+
+\nc\disk{}
+\def\disk[#1](#2)(#3)(#4){
+    % \disk[draw options](position)(x-radius)(y-radius)
+    \begin{scope}[shift={(#2)}]
+        \def\xRadius{#3}
+        \def\yRadius{#4}
+	    \draw[#1] (-\xRadius,0) to [bend right=15] (\xRadius,0);
+	    \draw[#1] [dashed] (-\xRadius,0) to [bend left=10] (\xRadius,0);
+	    \draw[#1] (\xRadius,0) arc (0:180:{\xRadius} and {\yRadius});
+    \end{scope} 
+}
+
+\nc\addGenus{}
+\def\addGenus[#1](#2)(#3)(#4){
+    % \addGenus[draw options](position)(angle)(scale)
+    \coordinate (genus) at (#2);
+    \begin{scope}[scale=#4]
+        \draw[#1] [rotate=#3] ($(genus)+(-1,0)$) to [bend left] ($(genus)+(1,0)$);
+        \draw[#1] [rotate=#3] ($(genus)+(-1.2,0.1)$) to [bend right] ($(genus)+(1.2,0.1)$);
+    \end{scope}
+}
+
+% draws vertical torus with marked point on bottom
+\nc\torus{}
+\def\torus[#1](#2)(#3)(#4){
+    % \torus[draw options](node position)(angle)(y-radius)
+    \node at (#2) {$\bullet$};
+    \def\torusXrad{0.6*#4}
+    \begin{scope}[shift={(#2)}, rotate around={#3:(#2)}]
+        \draw[#1] (0,#4) ellipse ({\torusXrad} and {#4});
+        \addGenus[#1](0,#4)(90)(0.375*#4);
+    \end{scope}
+}
+
+% draws closed Riemann surface with marked point on bottom
+\nc\closedGhost{}
+\def\closedGhost[#1](#2)(#3)(#4)(#5)(#6){
+    % \closedGhost[draw options](node position)(angle)(x-radius)(y-radius)(genus)
+    \node at (#2) {$\bullet$};
+    \begin{scope}[shift={(#2)}, rotate around={#3:(#2)}]
+        \draw[#1] (0,#5) ellipse ({#4} and {#5});
+        
+	    \edef\genusDist{0}
+	    \pgfmathparse{2*#5/(#6+1)} % tikz doesn't like addition
+        \edef\genusDist{\pgfmathresult}
+
+        \def\genusScale{0.5*#4}
+        
+        \foreach \idx in {1,...,#6}
+            \addGenus[#1](0,\idx*\genusDist)(0)(\genusScale);
+    \end{scope}
+}
+
+% helper function only; use openGhost below
+\nc\openGhostR{}
+\def\openGhostR[#1](#2)(#3)(#4)(#5){
+    % \openGhost[draw options](node position)(horizontal radius)(height)(number boundary circles)
+    \node at (#2) {$\bullet$};
+    
+    \begin{scope}[shift={(#2)}]
+        \draw[#1] (2*#3,0) arc (0:180:{#3} and {#4});
+        
+        \edef\bdryRad{0}
+    	\pgfmathparse{#3/(2*#5-1)} % tikz doesn't like addition
+        \edef\bdryRad{\pgfmathresult}
+        
+        \foreach \idx in {1,...,#5}
+            \draw [bend right=15] (4*\idx*\bdryRad-4*\bdryRad,0) to (4*\idx*\bdryRad-2*\bdryRad,0);
+        \foreach \idx in {1,...,#5}
+            \draw [bend left=10, dashed] (4*\idx*\bdryRad-4*\bdryRad,0) to (4*\idx*\bdryRad-2*\bdryRad,0);
+        \ifthenelse{#5=1}{}{
+            \foreach \idx in {2,...,#5}
+                \draw (4*\idx*\bdryRad-4*\bdryRad,0) to [out=90, in=0] (4*\idx*\bdryRad-5*\bdryRad,0.3*#4) to [out=180, in=90] (4*\idx*\bdryRad-6*\bdryRad,0);
+            }
+    \end{scope}
+}
+
+% draws genus 0 Riemann surface with arbitrary number of boundary components pointing downward, one marked point on bottom
+% by defuault Riemann surface appears to the right of the node
+% argument "left" causes Riemann surface to appear to the left of the node
+\nc\openGhost{}
+\def\openGhost[#1](#2)(#3)(#4)(#5)(#6){
+    % \openGhost[draw options](node position)(horizontal radius)(height)(number boundary circles)(left or right)
+    \ifthenelse{\equal{#6}{left}}{
+        \begin{scope}[xscale=-1]
+            \openGhostR[#1](#2)(#3)(#4)(#5)
+        \end{scope}
+    }{\openGhostR[#1](#2)(#3)(#4)(#5)}
+}
+
+%-------Symbol Table---------
+
+\renewcommand{\arraystretch}{1.5}
+\def\meaningColWidth{3.7in}
+\def\locColWidth{1.2in}
+
+\nc{\printSymbolTable}[1]{
+    \begin{longtable}{l>{\raggedright}p{\meaningColWidth}l} \label{dict}
+    {\bf Symbol} & {\bf Meaning} & {\bf Location}
+    #1
+    \end{longtable}
+    \bigskip
+}
+
+\nc{\addSymbol}[3]{\\ #1 & #2 & \parbox[t]{\locColWidth}{#3}}

@@ -1,0 +1,644 @@
+\section{A Special Case: (1,1) Domains} \label{11s}
+
+In this section we work through one example in detail. The results described here are all special cases of results in later sections. The purpose of this section is to illustrate the main principles in a situation which is less complicated than the general case.
+
+Throughout this section, we assume that the domain $\Sigma$ has topological type $(g,h)=(1,1)$. As always, the main component $(\Sigma_0,u_0)$ satisfies Hypothesis~\ref{hypMain}. In Subsection~\ref{base11ss} we compute the moduli space $\Nbar$ of maps with such domains. 
+We wish to compute the contribution $C(1,1)$ of maps in $\Nbar$ to type $(1,1)$ Gromov-Witten invariants. To do so, we fix a generic perturbation $\nu$, a section of the bundle of $(0,1)$ forms over $\Nbar$. We wish to count those maps $P \in \Nbar$ for which there exists a $t\nu$-holomorphic perturbation for every small $t$ (without loss of generality we can project $\nu$ to $Ob$, the cokernel bundle).
+
+To count such maps, we will build obstruction and gluing bundles $Ob$ and $\L$ over $\Nbar$ in Subsections~\ref{ob11ss} and \ref{glue11ss}, respectively:
+\[
+\begin{tikzcd}
+\Omega^{0,1}(\Nbar) \arrow[r, "\pi_{Ob}"] & Ob \arrow[d] & \pi_{\L}^*Ob \arrow[l, "\pi_{\L}"] \arrow[d]
+\\
+& \Nbar \arrow[ul, bend left, dashed, "\nu"] \arrow[u, bend left, dashed, "\ov{\nu}"] & \L \arrow[l, "\pi_{\L}"] \arrow[u, bend left, dashed, "\alpha"]
+\end{tikzcd}
+\]
+We let $\ov{\nu}=\pi_{Ob}\circ\nu$. In Subsection~\ref{lot11ss} we build a linear section $\alpha$ of $\pi_\L^*Ob$ and let $Ob^F$ be the complement of its image $Im(\pi_\L \circ \alpha)$ in $Ob$. We will then show that a map $P\in\Nbar$ perturbs precisely when $\ov{\nu}(P) \in Im(\pi_\L \circ \alpha)$\footnote{There is also a technical requirement which we will show to be irrelevant: that $\ov{\nu}(P)$ land in the positive part of the fiber when the ghost is attached along $\partial\Sigma_0$.}. This will allow us to relate the count of perturbable maps to the zeros of the projection of $\ov{\nu}$ to $Ob^F$. Finally, in Subsection~\ref{calc11ss} we will demonstrate that it is possible to determine the zero count of a (particular type of) generic section of $Ob^F$ and compute this value.
+
+\subsection{Moduli Space of (1,1) Domains} \label{base11ss}
+
+In this section we compute the moduli space of holomorphic curves of type $(1,1)$ with main component $(u_0,\Sigma_0)$. This a special case of the analysis presented in Section~\ref{baseS}. We will show that the moduli space of such curves has two cells of real dimensions four and five, respectively, and that their intersection has real dimension three. These cells will exhibit rather different behaviors with respect to obstruction and gluing. For this reason we take care to explain precisely how these cells intersect; it will later allow us to reconcile these different types of behavior.
+
+\begin{remark}
+If $\Sigma$ is of type $(1,1)$, then its double $\Sigma^{(\C)}$ has ghosts with total genus $2$. These ghosts may be two conjugate tori or a single genus $2$ surface attached along the real locus.
+
+However, not all symmetric closed curves with total genus $2$ are doubles of the open curves we consider. 
+When we restrict ourselves to domains of type $(1,1)$, we exclude the case of a genus $2$ surface whose upper half has genus $0$ and three boundary components.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\disk[](-4,0)(2)(3);
+\coordinate (node) at (-2,0);
+\openGhost[](node)(2.5)(3)(3)();
+
+\end{tikzpicture}
+\caption{A curve of type $(0,3)$.}
+\end{figure}
+Such a domain is of type $(0,3)$; although its double is also of genus $2$, it cannot be obtained from those we consider in this section. The double of a $(1,1)$ curve can be deformed to the double of a $(0,3)$ curve, but such a deformation necessarily passes through curves which are not doubles of bordered Riemann surfaces. See \cite{katzLiu} for a more detailed discussion of open curves and their doubles.
+\end{remark}
+
+\begin{lemma} \label{11sigma}
+There is a canonical inclusion $\rho:\Mbar_{1,1} \hookrightarrow \Mbar_\sigma$. Under this inclusion, $\E_{1,1}^*|_{\Mbar_{1,1}} = \E_1^*$, where $\E_{1,1}$ and $\E_1$ are the Hodge bundles for curves of type $(1,1)$ and genus $1$, respectively.
+\begin{proof}
+Each curve in $\Mbar_\sigma$ has a double in the real locus of $\Mbar_{2,1}$ (see Definition~\ref{cplxDouble}). There is a subset of the real locus of $\Mbar_{2,1}$ obtained by contracting two conjugate loops $\gamma,\ov{\gamma}$ as shown in Figure~\ref{m21}.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+% genus 2 curve
+\coordinate (g2) at (0,0);
+\node at ($(g2)+(-1.5,0)$) {$\bullet$};
+\sphere[](g2)(1.5)(3);
+\addGenus[]($(g2)+(0,2)$)(90)(0.5);
+\addGenus[yscale=-1]($(g2)+(0,-2)$)(90)(0.5);
+
+% loops
+\draw [bend right=15] (-1.45,0.75) to (1.45,0.75);
+\draw [bend left=10, dashed] (-1.45,0.75) to (1.45,0.75);
+\draw [bend right=15] (-1.45,-0.75) to (1.45,-0.75);
+\draw [bend left=10, dashed] (-1.45,-0.75) to (1.45,-0.75);
+\node [right] at (1.45,0.75) {$\gamma$};
+\node [right] at (1.45,-0.75) {$\ov{\gamma}$};
+
+% arrow
+\coordinate (arrow) at ($(g2)+(3,0)$);
+\draw [->, bend left] ($(arrow)+(-0.75,0)$) to ($(arrow)+(0.75,0)$);
+
+% nodal curve
+\coordinate (nodal) at ($(g2)+(5.5,0)$);
+\sphere[](nodal)(1)(1);
+\node at ($(nodal)+(-1,0)$) {$\bullet$};
+
+\coordinate (upnode) at ($(nodal)+(0,1)$);
+\torus[](upnode)(0)(1.2);
+
+\coordinate (downnode) at ($(nodal)+(0,-1)$);
+\begin{scope}[yscale=-1]
+    \torus[](downnode)(0)(1.2);
+\end{scope}
+
+\end{tikzpicture}
+\caption{Embedding $\Mbar_{1,1}$ in $\Mbar_{(1,1),0,1}$.}
+\label{m21}
+\end{figure}
+Such nodal symmetric genus two curves are in bijection with curves in $\Mbar_{1,1}$ because the central sphere lies in $\Mbar_{0,3}=\{\text{pt}\}$.
+
+Take $\Sigma \in \Mbar_{1,1}$. For any compact Riemann surface $S$ we have
+\[
+\coker(\delbar_S)=H^{0,1}(S)=(H^{1,0}(S))^*.
+\]
+It follows that there is an injective map $\coker(\delbar_{\Sigma}) \arr \coker(\delbar_{\rho(\Sigma)})$. Since $\E_{1,1}$ has real rank $2(1)+(1)-1=2$ and $\E_1$ has complex rank $1$, this map must be an isomorphism.
+\end{proof}
+\end{lemma}
+
+\begin{proposition} \label{base11}
+Assume that $u_0:(\Sigma_0,\partial\Sigma_0) \arr (M,L)$ satisfies Hypothesis~\ref{hypMain}. Let $\Nbar$ be the moduli space of holomorphic curves $u:(\Sigma,\partial\Sigma)\arr(M,L)$ such that
+\begin{enumerate}[(i)]
+\item $\Sigma_0$ is a component of $\Sigma$ with $u|_{\Sigma_0}=u_0$,
+\item $u$ is constant on every component other than $\Sigma_0$, and 
+\item $\Sigma$ is of type $(1,1)$ (i.e., a smoothing has genus one with one boundary component).
+\end{enumerate}
+Then
+\[
+\Nbar = \Nbar_{1,1} \bigcup\limits_{\Nbar_{1,1} \cap \Nbar_\sigma} \Nbar_\sigma
+\]
+where
+\begin{align*}
+\Nbar_{1,1} & \cong \Sigma_0 \times \Mbar_{1,1}
+\\
+\Nbar_\sigma & \cong \partial\Sigma_0 \times \Mbar_\sigma
+\\
+\Nbar_{1,1} \cap \Nbar_\sigma & \cong \partial\Sigma_0 \times \Mbar_{1,1}
+\end{align*}
+for $\sigma=((1,1),0,1)$.
+\begin{proof}
+The domain $\Sigma$ of any curve in $\N$ has a complex double $\Sigma^{(\C)}$, with a sphere as a main component and ghosts with total genus $2$. This symmetric double has either two conjugate ghost tori or one symmetric genus $2$ ghost attached along the real locus. In the latter case, the ghost component of $\Sigma$ must be of type $(1,1)$ or $(0,3)$. Observe that a $(0,3)$ ghost cannot be perturbed to a $(1,1)$ ghost nor to a pair of genus $1$ ghosts, so we can exclude such domains from consideration. However, as we will see, pairs of ghost tori must be considered along with $(1,1)$ ghosts.
+
+In the stratum where $\Sigma^{(\C)}$ has two ghost tori, $\Sigma_1 \in \Mbar_{1,1}$ is a closed torus, attached along the interior of $\Sigma_0$.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\disk[](0,0)(2)(3);
+\coordinate (node) at (1.49,2);
+\torus[](node)(-60)(2);
+
+\end{tikzpicture}
+\caption{Typical curve in $\Nbar_{1,1}$.}
+\label{pic11}
+\end{figure}
+We cannot perturb $(u_0,\Sigma_0)$, so in the open stratum we can only vary the curve by varying $\Sigma_1 \in \Mbar_{1,1}$ or the point at which it is attached. Thus we obtain a stratum of the moduli space of the form $(\Sigma_0\setminus\partial\Sigma_0) \times \Mbar_{1,1}$ (which is of real dimension $4$).
+
+Next we consider what happens when the marked point $z_1 \in \Sigma_0$ approaches the boundary. In $\Sigma^{(\C)}$, the ghost tori collide, producing a sphere bubble. Thus as $z_1 \arr \partial\Sigma_0 \cong S^1$, we see curves as in Figure~\ref{pic11sigma}.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\disk[](-4,0)(2)(3);
+\node at (-2,0) {$\bullet$};
+\disk[](0,0)(2)(3);
+
+\coordinate (node) at (1.49,2);
+\torus[](node)(-60)(2)
+
+\draw [decorate,decoration={brace,amplitude=10pt,mirror},xshift=0.4pt,yshift=-0.4pt] (-2,-0.5) -- (5,-0.5) node[black,midway,yshift=-0.6cm] {constant};
+
+\end{tikzpicture}
+\caption{Typical curve in $\Nbar_{1,1} \cap \Nbar_\sigma$.}
+\label{pic11sigma}
+\end{figure}
+The sphere bubble in $\Sigma^{(\C)}$ has three marked points, so there is only one such curve for each choice of node in $\partial\Sigma_0$ and each choice of ghost torus. Therefore $\Nbar$ has a cell\footnote{See Section~\ref{baseS} for terminology related to moduli spaces.} of the form $\Sigma_0 \times \Mbar_{1,1}$.
+
+But we can also smooth the node between the two ghost components, yielding one ghost of type $(1,1)$, as in Figure~\ref{m11}.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\disk[](-4,0)(2)(3);
+
+\openGhost[](-2,0)(2)(3)(1)();
+\addGenus[](0,1.5)(30)(0.75);
+
+\end{tikzpicture}
+\caption{Typical curve in $\Nbar_\sigma$.}
+\label{m11}
+\end{figure}
+This gives an additional cell $\partial\Sigma_0 \times \Mbar_\sigma$ of real dimension $5$, glued along the $3$-dimensional stratum $\partial\Sigma_0 \times \Mbar_{1,1}$. In particular, we glue via the inclusion of $\Mbar_{1,1}$ into $\Mbar_\sigma$ described in Lemma~\ref{11sigma}.
+\end{proof}
+\end{proposition}
+
+\subsection{Obstruction Bundle for (1,1) Domains} \label{ob11ss}
+
+We can build an obstruction bundle over the moduli space $\Nbar$ of curves, the fiber of which is the cokernel of the linearization (cf. Section~\ref{obS}). We begin by computing the fibers over the open strata of $\Nbar_{1,1}$ and $\Nbar_\sigma$ in the standard fashion. In the proof of Proposition~\ref{ob11} we examine the entire bundle over $\Nbar$.
+
+\begin{lemma} \label{ob11torus}
+Fix a map $u:(\Sigma,\partial\Sigma) \arr (M,L)$ in $\N_{1,1}$, so $\Sigma = \Sigma_0 \cup_{z \sim y} \Sigma_1$ for $\Sigma_0$ a disk, $(\Sigma_1,y) \in \M_{1,1}$, and $u_1=u|_{\Sigma_1}$ constant with value $p$. If
+\[
+\hat{D}:\Gamma(\Sigma,\partial\Sigma;u^*TM,u^*TL) \arr \Omega^{0,1}(\Sigma,u^*TM)
+\]
+is the linearization of the $\delbar$ operator at $u$, then $\ker(\hat{D})=0$ and
+\[
+\coker(\hat{D}) \cong T_pM \otimes_\C H^{0,1}(\Sigma_1).
+\]
+\begin{proof}
+Let $\hat{D}_i$ be the linearization at $u$ over $\Sigma_i$, with no variations in the domain. We split into tangent and normal directions, as in Section~\ref{mainS}. For the analysis of $\hat{D}_0=D_0$, see Lemma~\ref{ker0}.
+
+The linearization $D_1^V$ is straightforward for $V=u_1^*TC$ or $V=u_1^*NC$ (with $V_y$ the fiber of $V$) because $u_1$ is constant. Indeed, we can ignore the choice of domain because clearly the linearization is identically zero along $T_{\Sigma_1}\Mbar_{1,1}$. Because the bundle $u_1^*TM$ is trivial, the domain and codomain of $\hat{D}_1^V$ are
+\begin{align*}
+\Gamma(\Sigma_1,V) & \cong C^\oo(\Sigma_1, V_y)
+\\
+\Omega^{0,1}(\Sigma_1,V) & \cong \Omega^{0,1}(\Sigma_1) \otimes_\C V_y.
+\end{align*}
+Under this identification the linearization is just
+\[
+\hat{D}_1^V\xi_1 = \df{1}{2}\left( \nabla\xi_1+J(u_1) \circ \nabla\xi_1 \circ j \right) = \delbar\xi_1.
+\]
+It follows that $\ker(\hat{D}_1^V)$ is the set of holomorphic functions $\Sigma_1 \arr V_y$, all of which are constant by Lemma~\ref{holFnRS}. This proves $\ker(\hat{D}_1^V) \cong V_y$. We can also see that the cokernel is precisely $V_y \otimes_\C \coker_{\Sigma_1}(\delbar)$.
+
+To complete our analysis of $\hat{D}$, all that remains is to determine how the components $\hat{D}_0$ and $\hat{D}_1$ fit together. This follows from an argument using long exact sequences; see Proposition~\ref{nodalLin}.
+\end{proof}
+\end{lemma}
+
+\begin{lemma} \label{ob11open}
+Fix a map $u:(\Sigma,\partial\Sigma) \arr (M,L)$ in $\N_\sigma$, so $\Sigma = \Sigma_0 \cup_{z \sim y} \Sigma_1$ for $\Sigma_0$ a disk, $z \in \partial\Sigma_0$, $(\Sigma_1,y) \in \M_\sigma$, and $u_1=u|_{\Sigma_1}$ constant with value $p \in L$. If
+\[
+\hat{D}:\Gamma(\Sigma,\partial\Sigma;u^*TM,u^*TL) \arr \Omega^{0,1}(\Sigma,u^*TM)
+\]
+is the linearization of the $\delbar$ operator at $u$\, then $\ker(\hat{D})=0$ and
+\[
+\coker(\hat{D}) \cong T_pL \otimes_\R H^{0,1}(\Sigma_1).
+\]
+\begin{proof}
+Let $\hat{D}_i$ be the linearization at $u$ over $\Sigma_i$, with no variations in the domain. We split into tangent and normal directions, as in Section~\ref{mainS}. For the analysis of $\hat{D}_0=D_0$, see Lemma~\ref{ker0}.
+
+Because $u_1$ is constant, the bundle pairs $(u_1^*TC,u_1^*T\partial C)$ and $(u_1^*NC,u_1^*N\partial C)$ are both trivial. If $(V,V^{(\R)})$ is either of these bundle pairs, then the linearization $\hat{D}_1^V$ is straightforward. Indeed, we can ignore variations in the domain because the linearization is identically zero along $T_{\Sigma_1}\Mbar_\sigma$. Because the bundle pair $(u_1^*TM,u_1^*TL)$ is trivial, the domain and codomain of $\hat{D}_1^V$ are
+\begin{align*}
+\Gamma(\Sigma_1, \partial\Sigma_1; V, V^{(\R)}) & \cong C^\oo(\Sigma_1,\partial\Sigma_1; V_y,V_y^{(\R)})
+\\
+\Omega^{0,1}(\Sigma_1,V) & \cong \Omega^{0,1}(\Sigma_1) \otimes_\R V_y^{(\R)}.
+\end{align*}
+
+Under this identification the linearization is just
+\[
+\hat{D}_1^V\xi_1 = \df{1}{2}\left( \nabla\xi_1+J(u_1) \circ \nabla\xi_1 \circ j \right) = \delbar\xi_1.
+\]
+It follows that $\ker(\hat{D}_1^V)$ is the set of holomorphic functions $(\Sigma_1,\partial\Sigma_1) \arr (V_y,V_y^{(\R)})$, all of which are constant by Lemma~\ref{holFnRS}. This proves $\ker(\hat{D}_1^V) \cong V_y^{(\R)}$. We can also see that the cokernel is precisely $V_y^{(R)} \otimes_\R \coker_{\Sigma_1}(\delbar)$.
+
+To complete our analysis of $\hat{D}$, all that remains is to determine how the components $\hat{D}_0$ and $\hat{D}_1$ fit together. This follows from an argument using long exact sequences; see Proposition~\ref{nodalLin}.
+\end{proof}
+\end{lemma}
+
+\begin{proposition} \label{ob11}
+With $\Nbar$ as in Proposition~\ref{base11}, the obstruction bundle is of the form
+\[
+\begin{tikzcd}
+u_0^*TM \boxtimes_\C \E_1^* \arrow[d] & \bigcup & u_0^*TL \boxtimes_\R \E_{1,1}^* \arrow[d]
+\\
+(\Sigma_0 \times \Mbar_{1,1}) & \bigcup\limits_{S^1 \times \Mbar_{1,1}} & (\partial\Sigma_0 \times \Mbar_\sigma)
+\end{tikzcd}
+\]
+where $\E_1 \arr \Mbar_{1,1}$ and $\E_{1,1} \arr \Mbar_\sigma$ are the Hodge bundles. Over the intersection $\mathcal{N}_{1,1} \cap \mathcal{N}_\sigma \cong \partial\Sigma_0 \times \Mbar_{1,1}$, we identify the fibers as follows:
+\begin{align*}
+(u_0^*TM)|_{\partial\Sigma_0} \boxtimes_\C \E_1^* & \cong \left( u_0^*TL \otimes_\R \C \right) \boxtimes_\C \E_1^*
+\cong u_0^*TL \boxtimes_\R \E_{1,1}^*.
+\end{align*}
+(These are isomorphisms of real vector spaces.)
+\begin{proof}
+By Lemmas~\ref{ob11torus} and \ref{ob11open}, the kernel of the linearization at any map $u \in \Nbar$ is zero\footnote{More precisely, the kernel of the linearization with fixed domain is zero. If we allow variations in the domain, the kernel is exactly the set of these variations.}. It follows that there exist bundles over $\Nbar_{1,1}$ and $\Nbar_\sigma$ whose fiber over $u$ is $\coker(D_u)$; these fibers were also computed in Lemmas~\ref{ob11torus} and \ref{ob11open}. It is clear how fibers fit together along $\N_{1,1}$ or $\N_\sigma$, so all that remains is to examine the intersection $\Nbar_{1,1} \cap \Nbar_\sigma$. This intersection sits inside $\Nbar_{1,1} \cong \Sigma_0 \times \Mbar_{1,1}$ as $\partial\Sigma_0 \times \Mbar_{1,1}$, and it sits inside $\Nbar_\sigma \cong \partial\Sigma_0 \times \Mbar_\sigma$ via the inclusion $\Mbar_{1,1} \hookrightarrow \Mbar_\sigma$.
+
+Fix maps $u \in \Nbar_{1,1}$ and $v \in \Nbar_\sigma$ which represent the same curve in $\Nbar_{1,1} \cap \Nbar_\sigma$. Then $u$ and $v$ have domains $\Sigma_0 \cup_{z \sim y_{1,1}} \Sigma_{1,1}$ and $\Sigma_0 \cup_{z \sim y_\sigma} \Sigma_\sigma$, respectively, where $\Sigma_{1,1} \in \Mbar_{1,1}$ is identified with $\Sigma_\sigma$ under the inclusion $\Mbar_{1,1} \hookrightarrow \Mbar_\sigma$. Moreover, the restrictions $u_0$ and $v_0$ of $u$ and $v$ to the main component $\Sigma_0$ are equal, and both maps send their constant components to $p=u_0(z)$. 
+
+Regardless of which space of curves we consider, Lemmas~\ref{ob11torus} and \ref{ob11open} show that the fiber of the obstruction bundle is the cokernel of the linearization over the ghost component. Let
+\begin{align*}
+D_{1,1}: & \Gamma(\Sigma_{1,1},\Sigma_{1,1} \times T_pM) \arr \Omega^{0,1}(\Sigma_{1,1},\Sigma_{1,1} \times T_pM)
+\\
+D_\sigma: & \Gamma(\Sigma_\sigma, \partial\Sigma_\sigma; \Sigma_\sigma \times T_pM, \Sigma_\sigma \times (T_pM)^{(\R)}) \arr \Omega^{0,1}(\Sigma_\sigma,\Sigma_\sigma \times T_pM)
+\end{align*}
+be these linearizations. But since these bundles are trivial, we can identify
+\begin{align*}
+\Gamma(\Sigma_{1,1},\Sigma_{1,1} \times T_pM) & \cong C^\oo(\Sigma_{1,1}, T_pM)
+\\
+\Omega^{0,1}(\Sigma_{1,1},\Sigma_{1,1} \times T_pM) & \cong \Omega^{0,1}(\Sigma_{1,1}) \otimes_\C T_pM
+\\
+\Gamma(\Sigma_\sigma, \partial\Sigma_\sigma; \Sigma_\sigma \times T_pM, \partial\Sigma_\sigma \times (T_pM)^{(\R)}) & \cong C^\oo(\Sigma_\sigma,\partial\Sigma_\sigma; T_pM, (T_pM)^{(\R)})
+\\
+\Omega^{0,1}(\Sigma_\sigma,\Sigma_\sigma \times T_pM) & \cong \Omega^{0,1}(\Sigma_\sigma) \otimes_\C T_pM.
+\end{align*}
+Under these identifications, $D_{1,1}$ and $D_\sigma$ just become $(0,0)$-Dolbeault operators for $\Sigma_{1,1}$ and $\Sigma_\sigma$, respectively. Since
+\[
+T_pM \cong \C \otimes_\R (T_pM)^{(\R)},
+\]
+all that remains is to apply Lemma~\ref{11sigma}:
+\begin{align*}
+T_pM \otimes_\C \coker(\delbar_{\Sigma_{1,1}}) & \cong (T_pM)^{(\R)} \otimes_\R \C \otimes_\C \coker(\delbar_{\Sigma_{1,1}})
+\\
+& \cong (T_pM)^{(\R)} \otimes_\R \coker(\delbar_{\Sigma_\sigma}).
+\end{align*}
+\end{proof}
+\end{proposition}
+
+\subsection{Gluing Parameters for (1,1) Domains} \label{glue11ss}
+
+Our goal now is to determine the relationship between invariants of the bundle $Ob \arr \Nbar$ we built in Subsection~\ref{ob11ss} and the contribution of curves in $\Nbar$ to Gromov-Witten invariants. As described at the beginning of Section~\ref{11s}, we perturb the equation $\delbar(u) = 0$ via some $\nu$ and count those $P \in \Nbar$ which perturb to a $t\nu$-holomorphic map for all small $t$.
+
+We would like to view the solution space as the zero locus of a generic section of a bundle. Ideally, we would be able to use $Ob \arr \Nbar$. Unfortunately, the rank of the bundle is too large: 
+\[
+\begin{array}{rcr}
+\rk_\C(Ob_{1,1})	 = 3 & \qquad & \rk_\R(Ob_\sigma) = 6
+\\
+\dim_\C(\Nbar_{1,1}) = 2 && \dim_\R(\Nbar_\sigma) = 5.
+\end{array}
+\]
+For this reason, we must introduce an extra line bundle (complex over $\Nbar_{1,1}$ and real over $\Nbar_\sigma$) in order to resolve this difference.
+
+This bundle will consist of gluing parameters, which give ways to smooth out nodes to yield new (non-holomorphic) curves. In this subsection we construct this line bundle (cf. Section~\ref{glueS}); in Subsection~\ref{lot11ss} we will examine its relationship to the contribution we wish to compute.
+
+\begin{definition}
+The bundle $\L_{1,1}$ of gluing parameters over $\Nbar_{1,1}$ is $T\Sigma_0 \boxtimes_\C \mathcal{T}_{1,1}$, where $\mathcal{T}_{1,1}$ is the relative tangent bundle over $\Mbar_{1,1}$.
+
+The bundle $\L_\sigma$ of gluing parameters over $\Nbar_\sigma$ is $T\partial\Sigma_0 \boxtimes_\R \mathcal{T}_\sigma$, where $\mathcal{T}_\sigma$ is the relative tangent bundle over $\Mbar_\sigma$. 
+A real gluing parameter $\tau_z \otimes_\R \tau_y \in T_z\partial\Sigma_0 \otimes_\R T_y\partial\Sigma_1$ is \emph{positive} if $-j(\tau_z) \in T_z\Sigma_0$ and $j(\tau_y) \in T_y\Sigma_1$ are both inward pointing or both outward pointing.
+
+The bundle of gluing parameters $\pi_\L:\L \arr \Nbar$ is obtained by attaching $\L_\sigma$ to $\L_{1,1}$ along $\Nbar_{1,1} \cap \Nbar_\sigma$. 
+Over this intersection, the fibers of $\L_{1,1}$ are glued along $\Nbar_\sigma$ in a direction normal to $\Nbar_{1,1} \cap \Nbar_\sigma$ and the fibers of $\L_\sigma$ are glued along $\Nbar_{1,1}$ in a direction normal to $\Nbar_{1,1} \cap \Nbar_\sigma$ (see Remark~\ref{howToGlue11}).
+\end{definition}
+
+\begin{remark} \label{howToGlue11}
+We see that $\L_{1,1}$ is a complex line bundle whose fiber over $(\Sigma_0 \bigcup_{z \sim y} \Sigma_1, u)$ is $T_z\Sigma_0 \otimes_\C T_y\Sigma_1$, and $\L_\sigma$ is a real line bundle whose fiber over $(\Sigma_0 \bigcup_{z \sim y} \Sigma_1, u)$ is $T_z\partial\Sigma_0 \otimes_\R T_y\partial\Sigma_1$.
+
+Over the intersection $\Nbar_{1,1} \cap \Nbar_\sigma$, the direct sum $\L_{1,1} \oplus \L_\sigma$ has real rank three. 
+Fix a map $(u,\Sigma) \in \Nbar_{1,1} \cap \Nbar_\sigma$. Its ghost component can be viewed as $[\Sigma_{1,1},y_{1,1}] \in \Mbar_{1,1}$ or $[\Sigma_\sigma,y_\sigma] \in \Mbar_\sigma$. 
+Then the fiber of the direct sum over $u$ is $\C_u \oplus \R_u$, where
+\begin{align*}
+\C_u & = (T_z\Sigma_0 \otimes_\C T_{y_{1,1}}\Sigma_{1,1})
+\\
+\R_u & = (T_z\partial\Sigma_0 \otimes_\R T_{y_\sigma}\partial\Sigma_\sigma).
+\end{align*}
+We can split
+\[
+T\Nbar|_{\Nbar_{1,1} \cap \Nbar_\sigma} \cong T(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus V_{1,1} \oplus V_\sigma,
+\]
+where $V_{1,1}$ is the normal bundle to $\Nbar_{1,1} \cap \Nbar_\sigma$ in $\Nbar_{1,1}$ and $V_\sigma$ is the normal bundle to $\Nbar_{1,1} \cap \Nbar_\sigma$ in $\Nbar_\sigma$. Observe that $\dim_\R(V_{1,1})=1$ and $\dim_\C(V_\sigma)=1$; we wish to identify these bundles with $\R_u$ and $\C_u$, respectively.
+
+Lemma~\ref{glue11} gives instructions for identifying smoothing parameters with maps. A complex gluing parameter $\tau \in \C_u$ can be used to smooth the interior node of $\Sigma$, and a real gluing parameter $\tau \in \R_u$ can be used to smooth the boundary node of $\Sigma$ (see Figure~\ref{pic11sigma}). Thus we can identify 
+\begin{align*}
+T_u\Nbar_{1,1} & \cong T_u(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus \R_u
+\\
+T_u\Nbar_\sigma & \cong T_u(\Nbar_{1,1} \cap \Nbar_\sigma) \oplus \C_u.
+\end{align*}
+Therefore it makes sense to identify the fibers of gluing parameters from the two pieces of the moduli space with directions normal to the intersection. 
+This process allows us to build the bundle $\L$ of gluing parameters over all of $\Nbar$. Although $\Nbar$ has two pieces of different dimensions, the total space of $\L$ has constant real dimension $6$ (which is also the real rank of the obstruction bundle).
+\end{remark}
+
+While smoothing a given curve, we choose some small constant $R_0>0$ which satisfies all the hypotheses for gluing in \cite{dw}. In the case of an interior node $z \in \Sigma_0 \setminus \partial\Sigma_0$, we also add the hypothesis that $R_0$ is small enough to guarantee that the ball of radius $4R_0$ around $z$ does not intersect $\partial\Sigma_0$.
+
+\begin{lemma} \label{glue11}
+For $(u,\Sigma) \in \Nbar$, fix an element $\tau$ of the fiber $\L_{(u,\Sigma)}$ and assume
+\begin{enumerate}[(i)]
+\item $|\tau|<R_0$, and
+\item $\tau$ is positive if $(u,\Sigma) \in \Nbar_\sigma$.
+\end{enumerate}
+Then $\tau$ yields a Riemann surface $(\Sigma_\tau,j_\tau)$ and a smooth map $\tilde{u}_\tau:(\Sigma_\tau,\partial\Sigma_\tau) \arr (M,L)$ such that $\norm{\delbar(\tilde{u}_\tau)}_{L^p}$ is small in the sense of Proposition~5.8 of \cite{dw}.
+\begin{proof}
+First consider $(u,\Sigma) \in \Nbar_{1,1} \setminus \Nbar_\sigma$. We can use $\tau$ to smooth the node $z \sim y$ and build a smooth map of this new Riemann surface into $M$ as in \cite{dw}. Because the domain and map are only altered near the node, the analysis in Sections~4.2 and 5.2 of \cite{dw} still applies.
+
+However, we must take care when the node sits in $\partial\Sigma_0$. We may apply the results of \cite{dw} only to the double of the curve in the case of a boundary node.
+
+Fix $(u,\Sigma) \in \Nbar_\sigma$ and let $(\Sigma^{(\C)},c,\pi)$ be the complex double of $\Sigma$. Choose a metric on $\Sigma^{(\C)}$ so that the fixed locus of the involution $c$ is totally geodesic.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{2}
+\def\w{0.6*\r}
+
+% sigma0
+\coordinate (sigma0) at (0,0);
+\sphere[](sigma0)(\r)(\r);
+\node [left] at ($(sigma0)+(-\r,0)$) {Fix$(\sigma)$};
+
+\node at ($(sigma0)+(\r,0)$) {$\bullet$};
+
+% sigma1
+\coordinate (sigma1) at ($(sigma0)+(\r+\w,0)$);
+\sphere[](sigma1)(\w)(\r)
+
+\begin{scope}[shift=(sigma1)]
+	\addGenus[](0,0.375*\r)(20)(0.5);
+	\addGenus[yscale=-1](0,-0.375*\r)(20)(0.5);
+\end{scope}
+
+% labels
+\begin{scope}[shift=(sigma1)]
+	\draw [decorate,decoration={brace,amplitude=10pt,mirror},xshift=0.4pt,yshift=-0.4pt] (\w+0.5,0) -- (\w+0.5,\r) node[black,midway,xshift=0.6cm] {$\Sigma$};
+	\draw [decorate,decoration={brace,amplitude=10pt,mirror},xshift=0.4pt,yshift=-0.4pt] (\w+1.5,-\r) -- (\w+1.5,\r) node[black,midway,xshift=0.8cm] {$\Sigma^{(\C)}$};
+\end{scope}
+
+\end{tikzpicture}
+\caption{The complex double of a curve in $\Nbar_\sigma$.}
+\end{figure}
+We must analyze smoothings of $\Sigma^{(\C)} = \Sigma_0^{(\C)} \bigcup_{z \sim y} \Sigma_1^{(\C)}$ to understand smoothings of $\Sigma$. Gluing parameters for $\Sigma^{(\C)}$ are (small) elements of $T_z\Sigma_0^{(\C)} \otimes_\C T_y\Sigma_1^{(\C)}$. We smooth $\Sigma^{(\C)}$ by removing small neighborhoods of $z$ and $y$ from $\Sigma_0^{\C}$ and $\Sigma_1^{\C}$, respectively, and then identifying small collars $A_z$ and $A_y$ around these removed neighborhoods via a map $\iota_\tau$. 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{2}
+\def\w{0.6*\r}
+
+% sigma0
+\coordinate (sigma0) at (-1,0);
+
+\begin{scope}[shift=(sigma0)]
+	\draw (0,0) circle (\r);
+	\draw [thick, bend right = 15] (-\r,0) to (\r,0);
+\end{scope}
+
+% collar0
+\begin{scope}[shift=(sigma0)]
+    % erase part of sphere
+	\draw [white, fill=white] (1.8,-0.872) to [bend left=20] (1.8,0.872) -- (2.1,1) -- (2.1,-1) -- cycle;
+	
+	% draw edges of collar
+	\draw (1.8,-0.872) to [bend right=5] (1.8,0.872);
+	\draw (1.8,-0.872) to [bend left=20] (1.8,0.872);
+	\draw (1.6,-1.2) to [bend left=20] (1.6,1.2);
+\end{scope}
+\begin{scope}[shift=(sigma0)]
+    % fill collar
+	\clip (sigma0) circle (\r);
+	\draw [pattern = north east lines] (1.8,-0.872) to [bend left=20] (1.8,0.872) to [bend right=50] (1.6,1.2) to [bend right=20] (1.6,-1.2) to [bend right=50] cycle;
+\end{scope}
+\node [below right] at ($(sigma0)+(1.7,-0.872)$) {$A_z$};
+
+% sigma1
+\coordinate (sigma1) at (4,0);
+\begin{scope}[shift=(sigma1)]
+	\draw (0,0) ellipse ({\w} and {\r});
+	\draw [thick, bend right = 15] (-\w,0) to (\w,0);
+	\addGenus[](0,0.375*\r)(20)(0.5);
+	\addGenus[yscale=-1](0,-0.375*\r)(20)(0.5);
+\end{scope}
+
+% collar1
+\begin{scope}[shift={(-\w+0.2,0)}]
+    % erase part of surface
+    \draw [white, fill=white] (3.92,-0.872) to [bend right=20] (3.92,0.872) -- (3.7,1) -- (3.7,-1) -- cycle;
+    
+    % draw edges of collar
+    \draw (3.92,-0.872) to [bend left=5] (3.92,0.872);
+    \draw (3.92,-0.872) to [bend right=20] (3.92,0.872);
+    \draw (4.04,-1.2) to [bend right=20] (4.04,1.2);
+\end{scope}
+\begin{scope}[shift={(-\w+0.2,0)}]
+    \node [below left] at (3.92,-0.872) {$A_y$};
+    % fill collar
+    \clip (sigma1) ellipse ({\w} and {\r});
+    \draw [pattern = north east lines] (3.92,-0.872) to [bend right=20] (3.92,0.872) to [bend left=50] (4.04,1.2) to [bend left=20] (4.04,-1.2) to [bend left=50] cycle;
+    \node [below left] at (3.92,-0.872) {$A_{y_i}$};
+\end{scope}
+
+\end{tikzpicture}
+\caption{Collars near nodes.}
+\label{collars11}
+\end{figure}
+
+If $\tau=\tau_0 \otimes_\C \tau_1$ for $\tau_i$ tangent to $\Sigma_i$, then
+\[
+v \otimes_\C (\exp_y^{-1} \circ \iota_\tau \circ \exp_z(v)) = \tau_0 \otimes_\C \tau_1
+\]
+for all $v \in T_z\Sigma_0$. In particular, we have
+\begin{align*}
+\iota_\tau(\exp_z(t\tau_0))&=\exp_y(\tfrac{1}{t}\tau_1)
+\\
+\iota_\tau(\exp_z(-j(t\tau_0)))&=\exp_y(j(\tfrac{1}{t}\tau_1)).
+\end{align*}
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\d{1}
+\def\w{1}
+\def\r{3}
+\def\h{2}
+
+% collar0
+\draw (-\d,-1) to [bend right=10] (-\d,1);
+\draw (-\d,-1) to [bend left=15] (-\d,1);
+\draw [dashed] (-\d-\w,-1) to [bend right=10] (-\d-\w,1);
+\draw (-\d-\w,-1) to [bend left=15] (-\d-\w,1);
+\draw (-\d-\w,-1) -- (-\d,-1);
+\draw (-\d-\w,1) -- (-\d,1);
+
+\node at (-\d-0.75*\w,0.4) {$\bullet$};
+\node [left] at (-\d-\w,0.4) {$\exp_z(-j(s\tau_0))$};
+\node at (-\d-0.25*\w,-0.8) {$\bullet$};
+\node [below] at (-\d-0.25*\w,-0.9) {$\exp_z(t\tau_0)$};
+\node at (-\d-0.5*\w,-2) {$A_z$};
+
+% tan0
+\coordinate (center0) at (-\r-3,-\h);
+\coordinate (jt0) at ($(center0)+(-0.2,0.5)$);
+\coordinate (t0) at ($(center0)+(-0.4,-0.4)$);
+\draw [->] (center0) to (t0);
+\draw [->] (center0) to (jt0);
+\node [below] at (t0) {$\tau_0$};
+\node [above] at (jt0) {$-j(\tau_0)$};
+\draw ($(center0)+(-1,-2)$) -- ($(center0)+(-1,1)$) -- ($(center0)+(1,2)$) -- ($(center0)+(1,-1)$) -- cycle;
+\node at ($(center0)+(0,-2)$) {$T_z\Sigma_0$};
+
+% exp0
+\coordinate (arrow0) at ($0.5*(center0)+0.5*(-\d,0)$);
+\draw [->] ($(arrow0)+(-0.75,-0.25)$) to [bend left] ($(arrow0)+(0.75,0.25)$);
+\node [above left] at ($(arrow0)+(0,0.1)$) {$\exp_z$};
+
+% collar1
+\draw [dashed] (\d,-1) to [bend right=10] (\d,1);
+\draw (\d,-1) to [bend left=15] (\d,1);
+\draw (\d+\w,-1) to [bend right=10] (\d+\w,1);
+\draw (\d+\w,-1) to [bend left=15] (\d+\w,1);
+\draw (\d+\w,-1) -- (\d,-1);
+\draw (\d+\w,1) -- (\d,1);
+
+\node at (\d+0.25*\w,0.4) {$\bullet$};
+\node [right] at (\d+\w,0.4) {$\exp_y(j(\tfrac{1}{s}\tau_1))$};
+\node at (\d+0.75*\w,-0.8) {$\bullet$};
+\node [below] at (\d+0.75*\w,-0.9) {$\exp_y(\tfrac{1}{t}\tau_1)$};
+\node at (\d+0.5*\w,-2) {$A_y$};
+
+% tan1
+\coordinate (center1) at (\r+3,-\h);
+\coordinate (jt1) at ($(center1)+(0.2,0.5)$);
+\coordinate (t1) at ($(center1)+(0.4,-0.4)$);
+\draw [->] (center1) to (t1);
+\draw [->] (center1) to (jt1);
+\node [below] at (t1) {$\tau_1$};
+\node [above] at (jt1) {$j(\tau_1)$};
+\draw ($(center1)+(1,-2)$) -- ($(center1)+(1,1)$) -- ($(center1)+(-1,2)$) -- ($(center1)+(-1,-1)$) -- cycle;
+\node at ($(center1)+(0,-2)$) {$T_y\Sigma_1$};
+
+% exp1
+\coordinate (arrow1) at ($0.5*(center1)+0.5*(\d,0)$);
+\draw [->] ($(arrow1)+(0.75,-0.25)$) to [bend right] ($(arrow1)+(-0.75,0.25)$);
+\node [above right] at ($(arrow1)+(0,0.1)$) {$\exp_y$};
+
+% iota
+\draw [<->] (-0.5*\d,0) -- (0.5*\d,0);
+\node [above] at (0,0) {$\iota_\tau$};
+
+\end{tikzpicture}
+\caption{Identifying collars via $\tau$.}
+\label{iota11}
+\end{figure}
+Now we must determine whether this smoothing of $\Sigma^{(\C)}$ yields a smoothing $\Sigma_\tau$ of $\Sigma$. The doubled curve $\Sigma^{(\C)}$ is equipped with an anti-holomorphic involution $c$ and a double cover $\pi:\Sigma^{(\C)}\arr\Sigma$. In order for the smoothing of $\Sigma^{(\C)}$ to yield a smoothing of $\Sigma$, the smoothing must respect these structures. That is, when we identify the collars in $\Sigma_0^{(\C)}$ and $\Sigma_1^{(\C)}$, the halves of the collars which lie in $\Sigma_0$ and $\Sigma_1$ must be identified. This occurs precisely when the gluing parameter $\tau$ lies in the positive half of the real locus of $T_z\Sigma_0^{(\C)} \otimes_\C T_y\Sigma_1^{(\C)}$.
+
+Indeed, the smoothing $\Sigma_\tau^{\C}$ yields a smoothing of $\Sigma$ precisely when $\iota_\tau(A_z \cap \Sigma_0)=A_y \cap \Sigma_1$. If $\tau=\tau_0 \otimes_\C \tau_1$, we can assume without loss of generality that $\tau_1$ is tangent to the fixed locus $\text{Fix}(c)$ and that $j(\tau_1)$ points inward along $\Sigma_1$. It follows that $\exp_y(\tfrac{1}{t}\tau_1)$ must lie in the fixed locus and that $\exp_y(j(\tfrac{1}{t}\tau_1))$ must lie in $\Sigma_1$ (for appropriate values $t \in \R^+$). Since the points $\exp_y(\tfrac{1}{t}\tau_1)$ and $\exp_y(j(\tfrac{1}{t}\tau_1))$ are identified under $\iota_\tau$ with $\exp_z(t\tau_0)$ and $\exp_z(-j(t\tau_0))$, respectively, we can smooth $\Sigma$ via $\tau$ precisely when $\tau_0$ is also tangent to $\text{Fix}(c)$ and $-j(\tau_0)$ is inward pointing along $\Sigma_0$. When we embed $\Sigma \arr \Sigma^{(\C)}$, we see that $\text{Fix}(c)$ is precisely $\partial\Sigma$, so a smoothing of $\Sigma_\tau^{(\C)}$ yields a smoothing of $\Sigma$ if and only if the gluing parameter lies in the positive part of $T_z\partial\Sigma_0 \otimes_\R T_y\partial\Sigma_1$.
+
+When $\tau$ is real and positive, we define a smoothed map $u_\tau:(\Sigma_\tau,\partial\Sigma_\tau)\arr(M,L)$ precisely as in \cite{dw}. This map still sends $\partial\Sigma$ to $L$ because $L$ is totally geodesic. It is evident from the construction that the estimates computed in \cite{dw} still apply.
+\end{proof}
+\end{lemma}
+
+\subsection{Leading Order Term for (1,1) Domains} \label{lot11ss}
+
+In order to relate gluing parameters to the perturbable maps we wish to count, we pull the obstruction bundle back over the map $\pi_{\L}:\L\arr \Nbar$ and build a section of this new bundle.
+
+\begin{lemma} \label{lot11}
+There is a section $\alpha:\L \arr \pi_{\L}^*Ob$ whose restriction to $\L_{1,1}$ is the leading order term of the obstruction map constructed in Section~5.7 of \cite{dw}. A curve $P$ perturbs to a $t\nu$-holomorphic map if and only if there exists a gluing parameter $\tau$ (which must be positive if the curve lies in $\mathcal{N}_\sigma$) such that $\alpha(P;\tau)=t\ov{\nu}_P$.
+\begin{proof}
+Fix $(\Sigma,u) \in \Nbar_{1,1}$. For $\tau=\tau_0 \otimes_\C \tau_1$, we define $\alpha_{1,1}(\Sigma,u;\tau)$ by
+\[
+\langle \alpha_{1,1}(\Sigma,u;\tau),v \otimes_\C \zeta \rangle_{L^2} = \langle (\ov{\zeta} \otimes_\C d_yu)(\tau_1),v \rangle.
+\]
+Similarly, if $(\Sigma,u) \in \Nbar_\sigma$ and $\tau=\tau_0 \otimes_\R \tau_1$, we define $\alpha_\sigma(\Sigma,u;\tau)$ by
+\[
+\langle \alpha_\sigma(\Sigma,u;\tau),v \otimes_\R \zeta \rangle_{L^2} = \langle (\ov{\zeta} \otimes_\R d_y(u|_{\partial\Sigma_0}))(\tau_1),v \rangle.
+\]
+See the proof of Lemma~\ref{lot} for further details.
+\end{proof}
+\end{lemma}
+
+\subsection{Contribution for (1,1) Domains} \label{calc11ss}
+
+\begin{proposition} \label{calc11}
+The contribution of $\Nbar$ is
+\begin{equation}
+C(1,1) = \df{1}{2}\mu(N_0,N_0^{(\R)}) \cdot \chi(\E_1^*) = \df{1}{2}\mu(T\Sigma_0,T\partial\Sigma_0) \cdot \chi(\E_1). \label{cont11}
+\end{equation}
+\begin{proof}
+What is written below applies if we first pass to a smooth cover of each orbifold. Since each space of domains has a finite smooth cover, we can ignore the orbifold structure entirely.
+
+We will show that the contribution of $\mathcal{N}_\sigma$ is zero (cf. Proposition~\ref{calc}), which will leave only the contribution of $\mathcal{N}_{1,1}$. This second contribution can be computed in a fairly straightforward manner because the ghost is attached along the interior of the embedded component (and in particular, there is no issue of whether gluing parameters are positive).
+
+We computed the obstruction bundle $Ob$ in Proposition~\ref{ob11} and bundle $\L$ of gluing parameters in Lemma~\ref{glue11}. Let $\alpha$ be the leading order term from Lemma~\ref{lot11}. Its image in $Ob_{1,1}$ is the complex line bundle $T\Sigma_0 \boxtimes_\C \E_1^*$, and its image in $Ob_\sigma$ is the real line bundle $T\partial\Sigma_0 \boxtimes_\R F_\sigma^\perp$, where $F_\sigma^\perp \subset \E_{1,1}^*$ is the (real rank $1$) complement of the bundle generated by $\zeta_y=0$. Let $Ob^F$ be the complement of the image of $\alpha$ in $Ob$:
+\[
+\begin{tikzcd}
+N_0 \boxtimes_\C \E_1^* \arrow[d] & \bigcup & \left( (T_0^{(\R)} \boxtimes_\R F_\sigma) \oplus (N_0^{(\R)} \boxtimes_\R \E_{1,1}^*) \right) \arrow[d]
+\\
+(\Sigma_0 \times \Mbar_{1,1}) & \bigcup\limits_{S^1 \times \Mbar_{1,1}} & (\partial\Sigma_0 \times \Mbar_\sigma)
+\end{tikzcd}
+\]
+Over each stratum, the rank of the bundle is equal to the dimension of the base, so a generic section has a finite number of zeros. Observe that in general a moduli space of open curves, such as $\Mbar_\sigma$, may have codimension one boundary (meaning that the zero count may vary from one section to the next). However, we will construct a non-vanishing section in order to demonstrate that the contribution of this cell of the moduli space is zero.
+
+By Lemma~\ref{lot11}, we only need to construct a generic section $\rho$ of $Ob$ such that
+\begin{enumerate}[(i)]
+\item $\proj_{Ob_\sigma^F}(\rho_\sigma)$ is non-vanishing, and
+\item the number of zeros of $\proj_{Ob_{1,1}^F}(\rho_{1,1})$ is (\ref{cont11}).
+\end{enumerate}
+
+Since the bundle over each stratum is a tensor product of bundles, we consider the factors separately. First we decompose the tangent bundles $TM|_{\Sigma_0}$ and $TL|_{\partial\Sigma_0}$. We can split into directions tangent and normal to the curve. Because the normal bundle is a complex rank two bundle over a surface, we can split off a trivial line bundle. Therefore, we can write
+\begin{align*}
+u_0^*TM & = V_1 \oplus V_2 \oplus V_3
+\\
+u_0^*TL & = V_1^{(\R)} \oplus V_2^{(\R)} \oplus V_3^{(\R)},
+\end{align*}
+where $V_1=T\Sigma_0$, $V_3$ is trivial, and $V_j^{(\R)}=V_j \cap L$. 
+
+Pick generic sections $v_j$ of $V_j$ so that
+\begin{enumerate}[(i)]
+\item $v_3$ is non-vanishing,
+\item $v_j|_{\partial\Sigma_0}$ lands in $V_j^{(\R)}$, and
+\item $v_j|_{\partial\Sigma_0}$ is non-vanishing as a section of $V_j^{(\R)}$.
+\end{enumerate}
+It is possible to insist that the projections onto the real sub-bundles be non-vanishing because every (orientable) bundle over $\partial\Sigma_0 \cong S^1$ is trivial.
+
+Next, choose sections $\eta_1,\eta_2,\eta_3$ of $\E_{1,1}^*$ which are transverse to the zero section so that
+\begin{enumerate}[(i)]
+\item $Z(\eta_2) \cap Z(\eta_3) = \emptyset$ and
+\item $\proj_{F_\sigma}(\eta_1)$ is transverse to the zero section of $F_\sigma$.
+\end{enumerate}
+Note that by restricting to $\Mbar_{1,1}$ each $\eta_j$ yields a section of $\E_1^*$ satisfying the same properties (see Lemma~\ref{11sigma}).
+
+Finally, we set
+\[
+\rho = (v_1 \boxtimes_\R \eta_1) \oplus (v_2 \boxtimes_\R \eta_2) \oplus (v_3 \boxtimes_\R \eta_3).
+\]
+The contribution from $\Nbar_\sigma$ is the signed count of positive zeros of
+\[
+\proj_{Ob_\sigma^F}(\rho_\sigma) = (v_1|_{\partial\Sigma_0} \boxtimes_\R \proj_{F_\sigma}(\eta_1)) \oplus (v_2|_{\partial\Sigma_0} \boxtimes_\R \eta_2) \oplus (v_3|_{\partial\Sigma_0} \boxtimes_\R \eta_3).
+\]
+It is this positivity criterion which makes counting difficult. 
+But $v_2$ and $v_3$ are non-vanishing along $\partial\Sigma_0$ and $Z(\eta_2) \cap Z(\eta_3) = \emptyset$, implying that $\proj_{Ob_\sigma^F}(\rho_\sigma)$ has no zeros. In particular, the non-vanishing of $\proj_{Ob_\sigma^F}(\rho_\sigma)$ eliminates the issue of positivity of gluing parameters.
+
+The total contribution from $\Nbar$ is the contribution from $\Nbar_{1,1}$, which is the signed count of zeros of
+\[
+\proj_{Ob_{1,1}^F}(\rho_{1,1}) = (v_2 \boxtimes_\C \eta_2|_{\Mbar_{1,1}}) \oplus (v_3 \boxtimes_\C \eta_3|_{\Mbar_{1,1}}).
+\]
+Since $v_3$ is non-vanishing and $\eta_2$ and $\eta_3$ have disjoint zero loci, the set of zeros is
+\[
+Z(v_2) \times Z(\eta_3).
+\]
+Because $\eta_3$ is a generic section of the complex line bundle $\E_1^* \arr \Mbar_{1,1}$, its zero locus represents the Euler class of this bundle. On the other hand, $v_2$ is a section over a disk, so we cannot use Chern classes to represent its zero locus. However, using the doubling constructions described in Section~3.3.3 of \cite{katzLiu}, we can see that $\#Z(v_2)$ is precisely half the Maslov index:
+\[
+\df{1}{2}\mu(V_2,V_2^{(\R)}) = \df{1}{2}\mu(N_0,N_0^{(\R)}) = -\df{1}{2}\mu(T\Sigma_0,T\partial\Sigma_0).
+\]
+This completes the proof.
+\end{proof}
+\end{proposition}
+
+\begin{remark}
+Let $V_2 \arr \Sigma_0$ and $v_2$ be as in the proof of Proposition~\ref{calc11}. Assume the target manifold $M$ has an anti-symplectic involution whose fixed locus is $L$. We can double bundles and sections, as in Section~3.3.3 of \cite{katzLiu}. Therefore the contribution is
+\[
+\df{1}{2}\mu(V_2,V_2^{(\R)})\chi(\E_1^*) = \#Z(v_2)\chi(\E_1^*) = \df{1}{2}c_1(V_2^{(\C)})\chi(\E_1^*) = \df{1}{2}c_1(N_0^{(\C)})\chi(\E_1^*)
+\]
+(cf. \cite{niuZinger}).
+\end{remark}

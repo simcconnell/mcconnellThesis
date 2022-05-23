@@ -1,0 +1,22 @@
+\section{Leading Order Term} \label{lotS}
+
+We have introduced gluing parameters in order to reconcile the difference between the rank of the obstruction bundle and the dimension of the base (see Remark~\ref{dimFinZeros}). In order to relate these parameters to the obstruction bundle, we pull the obstruction bundle back over the map $\pi_{\L}:\L\arr \Nbar$ and build a section of this new bundle.
+
+\begin{lemma} \label{lot}
+There is a section $\alpha:\L \arr \pi_{\L}^*Ob$ such that a curve $P \in \Nbar$ perturbs to a $t\nu$-holomorphic map if and only if there exists a gluing parameter $\tau$ (with $\tau_i$ positive for $i>r$) such that $a(P;\tau)=t\ov{\nu}_P$. Given a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$ of some topological type $(g,h)$, the restriction of $\alpha$ to the interior gluing parameters $\L_1 \oplus \ldots \oplus \L_r$ is the leading order term of the obstruction map constructed in Section~5.7 of \cite{dw}.
+\begin{proof}
+Fix a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$ and a map $(\Sigma,u) \in \Nbar_\lambda$. We define the map $\alpha$ on each factor by the relation \footnote{The formula given in Lemma~5.46 of \cite{dw} includes a map $u_{\sigma,\tau_1,0;J;\kappa}$. The parameter $\sigma$ represents a variation in the domain and $\kappa$ an element of the kernel of the linearization--- together, these correspond to our choice of map in $\Nbar_\lambda$. The gluing parameter $(\tau_1,0)$ in \cite{dw} is a gluing parameter for nodes internal to ghost branches (our $\tau$ corresponds to their $\tau_2$). We ignore the $J$ parameter because we do not vary the almost complex structure.}
+\[
+\langle \alpha_{\lambda,i}(\Sigma,u;\tau), \zeta_i \otimes_\C v_i \rangle_{L^2} = \langle (\ov{\zeta_i} \otimes_\C d_{y_i}u)(\tau_{i,1}), v_i \rangle
+\]
+for $i \leq r$ and 
+\[
+\langle \alpha_{\lambda,i}(\Sigma,u;\tau), \zeta_i \otimes_\R v_i \rangle_{L^2} = \langle (\ov{\zeta_i} \otimes_\R d_{y_i}(u|_{\partial\Sigma}))(\tau_{i,1}), v_i \rangle
+\]
+for $i>r$. Set
+\[
+\alpha_\lambda = \bigoplus\limits_{i=1}^{r+q} \alpha_{\lambda,i}.
+\]
+This matches the leading term of the Kuranishi map constructed in Section~5.6 of \cite{dw}. With minor modifications, the analysis of this map in Sections~5.6 and 5.7 of \cite{dw} applies to curves with boundary in the context of Ruan-Tian perturbations.
+\end{proof}
+\end{lemma}

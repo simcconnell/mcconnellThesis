@@ -1,0 +1,248 @@
+\section{Main Component and Linearization} \label{mainS}
+
+In this section we establish some properties of linearizations. All of the holomorphic curves we consider will have a disk satisfying Hypothesis~\ref{hypMain} as a main component. The goal of this section is to compute the linearization for this disk and determine how the addition of constant components affects this linearization. These results are all standard; some readers may wish to skip this section entirely.
+
+Let $C=u_0(\Sigma_0)$ and $T_0=TC_0$. We split 
+\[
+u_0^*TM = T_0 \oplus N_0
+\]
+and
+\[
+u_0^*TL = T_0^{(\R)} \oplus N_0^{(\R)},
+\]
+where $T_0^{(\R)}=T\partial C_0$ and $N_0^{(\R)}=N_0 \cap L$. Note that if we add ghosts to $u_0$, this splitting extends naturally to the trivial pullback bundle over any constant component. 
+
+If $\mathcal{M}$ is a space of domains, we can then split the linearization into two pieces:
+\begin{align*}
+& D^T: \Gamma(\Sigma,TC) \oplus T_\Sigma\mathcal{M} \arr \Omega^{0,1}(\Sigma,TC)
+\\
+& D^N: \Gamma(\Sigma,N) \arr \Omega^{0,1}(\Sigma,N).
+\end{align*}
+(For both of these operators, we restrict in the domain and project in the codomain.)
+
+\begin{lemma} \label{ker0}
+Assume that $u_0:(\Sigma_0,\partial\Sigma_0)\arr(M,L)$ satisfies Hypothesis~\ref{hypMain} and let
+\[
+D_0~:~\Gamma(\Sigma_0,\partial\Sigma_0;u_0^*TM,u_0^*TL)\arr\Omega^{0,1}(\Sigma,u_0^*TM)
+\]
+be its linearization, with $D_0^N$ and $D_0^T$ its normal and tangent components. Then 
+\[
+\begin{array}{rclcrcl}
+\ker(D_0^N) & = & 0 & \qquad\qquad & \coker(D_0^N) & = & 0
+\\
+\ker(D_0^T) & = & T_{\text{I}}\Aut(\Sigma_0) && \coker(D_0^T) & = & 0
+\\
+\ker(D_0) & = & T_{\text{I}}\Aut(\Sigma_0) && \coker(D_0) & = & 0.
+\end{array}
+\]
+In particular, $D$ descends to an isomorphism $T_{u_0}(\mathcal{B}_0/Aut(\Sigma_0)) \arr \Omega^{0,1}(\Sigma_0,u_0^*TM)$ along the moduli space $\mathcal{B}_0$ of holomorphic disks, and the map $u_0$ is isolated in $\mathcal{B}_0$.
+\begin{proof}
+Let $C_0=u_0(\Sigma_0) \subset M$, $T_0=u_0^*TC_0$, and $N_0=u_0^*TM/u_0^*TC_0$. We split into tangent and normal directions:
+\begin{align*}
+\Gamma_0^T & = \Gamma(\Sigma_0,\partial\Sigma_0;T_0,T_0^{(\R)})
+\\
+\Gamma_0^N & = \Gamma(\Sigma_0,\partial\Sigma_0;N_0,N_0^{(\R)}).
+\end{align*}
+
+Let $\mathcal{B}_0=C^\oo(\Sigma_0,\partial\Sigma_0;M,L)$ (there are no variations in the complex structure on $\Sigma_0$). Around $u_0$, pick a slice $S \subset \mathcal{B}_0$ for the action of $\Aut(\Sigma_0)$:
+\[
+\begin{tikzcd}
+& \mathcal{E} \arrow[d]
+\\
+S \arrow[r, hook] & \mathcal{B}_0 \arrow[d] \arrow[u, bend left, dashed, "\delbar"]
+\\
+& \mathcal{B}_0/\Aut(\Sigma_0) \arrow[ul, bend left, dashed, "\cong"]
+\end{tikzcd}
+\]
+Near $u_0$, $S$ is isomorphic to the moduli space. 
+If $O(u_0)$ is the orbit of $u_0$, then
+\[
+T_{u_0}S \cong T_{[u_0]}\left( \mathcal{B}_0/\Aut(\Sigma_0) \right) \cong T_{u_0}\mathcal{B}_0/T_{u_0}O(u_0).
+\]
+Note that $T_{u_0}O(u_0)$ lies entirely in the tangent direction. Therefore
+\[
+T_{u_0}S \cong (\Gamma_0^T/T_{u_0}O(u_0)) \oplus \Gamma_0^N.
+\]
+We define $D_0:T_{u_0}\mathcal{B}_0 \arr \Omega^{0,1}(u_0^*TM)$ in the usual way. 
+Because $u_0$ is an embedding we have
+\[
+\mu(T_0,T_0^{(\R)})=\mu(T\Sigma_0,T\partial\Sigma_0)=2.
+\]
+Hypothesis~\ref{hypL} implies
+\[
+\mu(T_0,T_0^{(\R)})+\mu(N_0,N_0^{(\R)})=\mu(u_0^*TM,u_0^*TL)=0.
+\]
+Riemann-Roch gives
+\begin{align*}
+\ind(D_0^T)&=\rk_\C(T_0)\cdot\chi(\Sigma_0)+\mu(T_0,T_0^{(\R)})=3
+\\
+\ind(D_0^N)&=\rk_\C(N_0)\cdot\chi(\Sigma_0)+\mu(N_0,N_0^{(\R)})=0
+\\
+\ind(D_0)&=\rk_\C(u_0^*TM)\cdot\chi(\Sigma_0)+\mu(u_0^*TM,u_0^*TM^{(\R)})=3.
+\end{align*}
+
+First we address $D_0^T$. Because $u_0$ is an embedding, $D_0^T$ can be identified with the linearization of
+\[
+\delbar_{\Sigma_0}:\Diff(\Sigma_0) \arr \Omega^{0,1}(\Sigma_0,T\Sigma_0).
+\]
+Since the zero set is precisely $\Aut(\Sigma_0)$, we have $\ker(D_0^T)=T_{u_0}O(u_0)$ and $\coker(D_0^T)=0$.
+
+By hypothesis $\coker(D_0^N)=0$, so $\ind(D_0^N)=0$ implies $\ker(D_0^N)=0$.
+
+Finally we examine $D_0$, which is surjective by hypothesis. Therefore $\coker(D_0)=0$ and $\dim_\R(\ker(D_0))=3$. But since $T_{u_0}O(u_0) \subset \ker(D_0)$ also has dimension $3$ this inclusion must in fact be an equality.
+
+It is clear from the computation that $D$ descends to an isomorphism after dividing out by equivalence, so the tangent space to the space of holomorphic disks at $u_0$ must be zero, meaning that $u_0$ is isolated.
+\end{proof}
+\end{lemma}
+
+Linearizations of constant maps are straightforward; all that remains is to determine what happens when we add these constant maps to the main component. The proof of the following proposition is, unfortunately, somewhat technical in nature. Its purpose is merely to demonstrate that the kernel of the linearization is always the tangent space to the moduli space of curves and that the cokernel (i.e., the fiber of the obstruction bundle) depends only on the cokernels of the linearizations at the constant components. The moduli space of curves $\Nbar$ is defined in Section~\ref{baseS}, and the cokernels over the constant components appear in Section~\ref{obS}.
+
+\begin{proposition} \label{nodalLin}
+Assume that $u_0:(\Sigma_0,\partial\Sigma_0)\arr(M,L)$ satisfies Hypothesis~\ref{hypMain} and let $D_0$ be its linearization (as in Lemma~\ref{ker0}).
+
+For $i=1,\ldots,r+q$, assume that $\Sigma_i \in \Mbar_{\sigma_i}$ is a domain with one marked point $y_i$ attached to $\Sigma_0$ at $z_i$. For $i \leq r$, we assume that $\Sigma_i$ is closed (i.e., $\sigma_i=(g_i,1)$) and attached at an interior point of $\Sigma_0$. For $i>r$, we assume that $\Sigma_i$ is open with marked point along the boundary (i.e., $\sigma_i=((g_i,h_i),0,(1,0,\ldots,0))$) and attached at a boundary point of $\Sigma_0$. 
+Extend $u_0$ to a map $u$ defined on $\Sigma=\Sigma_0 \cup \Sigma_1 \ldots \cup \Sigma_{r+q}$ by requiring that $u$ be constant on all components but $\Sigma_0$. 
+Let
+\[
+D_i:T_{\Sigma_i}\Mbar_{\sigma_i} \oplus \Gamma(\Sigma_i,\partial\Sigma_i;u_i^*TM,u_i^*TL)\arr\Omega^{0,1}(\Sigma_i,u_i^*TM)
+\]
+be the linearization of $\delbar$ at $u_i=u|_{\Sigma_i}$, with $D_i^N$ and $D_i^T$ its tangent and normal components. 
+
+Let $(g,h)$ be the topological type of $\Sigma$ and $\S$ the (real codimension $2r+q$) nodal stratum of $\Mbar_{(g,h),0,\vec{0}}$ which contains $\Sigma$. Set
+\[
+\Nbar = \prod\limits_{i=1}^{r} (\Sigma_0 \times \Mbar_{\sigma_i}) \times \prod\limits_{i=r+1}^{r+q} (\partial\Sigma_0\times\Mbar_{\sigma_i}).
+\]
+If
+\[
+D:T_\Sigma\S \oplus \Gamma(\Sigma,\partial\Sigma;u^*TM,u^*TL)\arr\Omega^{0,1}(\Sigma,u^*TM)
+\]
+is the linearization of $\delbar$ at $u$, then
+\[
+\begin{array}{rclcrcl}
+\ker(D^N) & = & 0 & \qquad\qquad & \coker(D^N) & = & \bigoplus\limits_{i=1}^{r+q} \coker(D_i^N)
+\\
+\ker(D^T) & = & T_\Sigma\Nbar && \coker(D^T) & = & \bigoplus\limits_{i=1}^{r+q} \coker(D_i^T)
+\\
+\ker(D) & = & T_\Sigma\Nbar && \coker(D) & = & \bigoplus\limits_{i=1}^{r+q} \coker(D_i).
+\end{array}
+\]
+\begin{proof}
+The analyses of the component linearizations appear in Lemmas~\ref{ker0}, \ref{kerClosed}, and \ref{kerOpen}. The primary goal of this proof is to determine how a collection of linearizations over components fit together into a linearization for a nodal Riemann surface. The key observation is that for $E$ a bundle over a nodal domain $\Sigma$, we cannot break $\Gamma(\Sigma,E)$ into a direct sum of factors of the form $\Gamma(\Sigma_i,E|_{\Sigma_i})$, but we can decompose in this manner if we restrict to sections which vanish at the nodal points. Using long exact sequences to relate these special sections to general sections, we can determine the relationship between the total linearization and its components (as in Appendix~A of \cite{splitting}).
+
+Let $S$ be a domain with marked points ${\bf{x}}=(x_1,\ldots,x_k,x_{k+1},\ldots,x_{k+l})$ such that $x_i \in \partial S$ if and only if $i>k$. Let $E \arr S$ be a complex vector bundle with totally real sub-bundle $E^{(\R)}$ along $\partial S$. Set
+\[
+\Gamma_{\bf{x}}(S,\partial S;E,E^{(\R)}) = \{\xi \in \Gamma(S,\partial S;E,E^{(\R)}): \xi(x_i)=0 \text{ for all } i\}.
+\]
+Let
+\[
+E_{\bf{x}} = \left( \bigoplus\limits_{i=1}^{k} E_{x_i}  \right) \oplus \left( \bigoplus\limits_{i=k+1}^{k+l} E_{x_i}^{(\R)} \right)
+\]
+be the direct sum of the fibers over the marked points and $\text{ev}_{\bf{x}}$ the evaluation map at the marked points. For an operator $A:\Gamma(S,\partial S;E,E^{(\R)}) \arr \Omega^{0,1}(S,E)$, let $A_{\bf{x}}$ be its restriction to those sections which vanish at the marked points. Then there is a commutative diagram
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & \Gamma_{\bf{x}}(S,\partial S;E,E^{(\R)}) \arrow[r] \arrow[d, "A_{\bf{x}}"] & \Gamma(S,\partial S;E,E^{(\R)}) \arrow[r, "\text{ev}_{\bf{x}}"] \arrow[d, "A"] & E_{\bf{x}} \arrow[r] & 0
+\\
+0 \arrow[r] & \Omega^{0,1}(S,E) \arrow[r, "\text{I}"] & \Omega^{0,1}(S,E) \arrow[r] & 0 \arrow[r] & 0
+\end{tikzcd} \label{diagDecomp}
+\end{equation}
+with exact rows, allowing us to apply the snake lemma. 
+
+We proceed with this construction and application of the snake lemma for each component of $\Sigma$ in both the normal and tangent directions. We begin with the computation in the normal direction, as it is fairly straightforward.
+
+First, consider the main component $\Sigma_0$ with its marked points ${\bf z}=(z_1,\ldots,z_{r+q})$. We examine diagram~(\ref{diagDecomp}) with $S=\Sigma_0$, $E=N_0$, and $A=D_0^N$. By Lemma~\ref{ker0}, we have $\ker(D_0^N)=0$ and $\coker(D_0^N)=0$. Therefore the snake lemma yields the following exact sequence:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & \ker(D_{0,\bf{z}}^N) \arrow[r] & 0 \arrow[r] & (u_0^*NC)_{\bf{z}} \arrow[r, "\delta_0^N"] & \coker(D_{0,\bf{z}}^N) \arrow[r] & 0
+\end{tikzcd}
+\label{snake0N}
+\end{equation}
+It follows immediately that $\ker(D_{0,\bf{z}}^N)=0$ and $\coker(D_{0,\bf{z}}^N)=(u_0^*NC)_{\bf{z}}$.
+
+Next we apply the same process to $D_i^N$ for $1 \leq i \leq r+q$. By Lemmas~\ref{kerClosed} and \ref{kerOpen}, $\ker(D_i^N)$ consists of constant sections (with values in $(u_i^*NC)_{y_i}$, where $(u_i^*NC)_{y_i}=N_{p_i}M$ for $i \leq r$ and $(u_i^*NC)_{y_i}=N_{p_i}L$ for $i>r$). Therefore when we restrict to those sections which vanish at a point, the kernel disappears: $\ker(D_{i,y_i}^N)=0$ for all $i$. The snake lemma gives the following exact sequence:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & (u_i^*NC)_{y_i} \arrow[r] &(u_i^*NC)_{y_i} \arrow[r, "\delta_i^N"] & \coker(D_{i,y_i}^N) \arrow[r] & \coker(D_i^N) \arrow[r] & 0
+\end{tikzcd}
+\label{snakeiN}
+\end{equation}
+It follows that $\delta_i^N=0$ and $\coker(D_{i,y_i}^N)=\coker(D_i^N)$.
+
+As observed at the beginning of this proof, while the linearizations $D_i^N$ do not fit together in a straightforward fashion, their restrictions to sections which vanish at marked points do. That is, for any bundle $E$ we have
+\[
+\Gamma_{\bf{z},\bf{y}}(\Sigma,\partial\Sigma; E,E^{(\R)}) \cong \Gamma_{\bf{z}}(\Sigma_0,\partial\Sigma_0; E_0,E_0^{(\R)}) \oplus \bigoplus\limits_{i=1}^{r+q} \Gamma_{y_i}(\Sigma_i,\partial\Sigma_i; E_i,E_i^{(\R)}).
+\]
+Since $(0,1)$-forms are not required to match at nodes, $\Omega^{0,1}(\Sigma,E)$ also decomposes as a direct sum over components. Thus the operator $D_{\bf{z},\bf{y}}^N$ is precisely the direct sum of the operators $D_{0,\bf{z}}^N$ and $D_{i,y_i}^N$. It follows that
+\[
+\ker(D_{\bf{z},\bf{y}}^N) = \ker(D_{0,\bf{z}}^N) \oplus \ker(D_{1,y_1}^N) \oplus \ldots \oplus \ker(D_{r+q,y_{r+q}}^N) = 0
+\]
+and
+\[
+\coker(D_{\bf{z},\bf{y}}^N) = \coker(D_{0,\bf{z}}^N) \oplus \coker(D_{1,y_1}^N) \oplus \ldots \oplus \coker(D_{r+q,y_{r+q}}^N).
+\]
+As for $D^N$, the kernel is straightforward to analyze because if $D^N(\xi_0\cup\ldots\cup\xi_{r+q})=0$ then $D_i^N(\xi_i)=0$ for $0 \leq i \leq r+q$. Thus we see $\ker(D^N)=0$. Therefore applying the snake lemma to diagram~(\ref{diagDecomp}) with $S=\Sigma$, $E=u^*NC$, and $A=D^N$ yields the following exact sequence:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & (u^*NC)_{\bf{z}} \arrow[r, "\delta^N"] & \coker(D_{0,\bf{z}}^N) \oplus \bigoplus\limits_{i=1}^{r+q} \coker(D_{i,y_i}^N) \arrow[r] & \coker(D^N) \arrow[r] & 0
+\end{tikzcd}
+\label{snakeN}
+\end{equation}
+All that remains to be seen is that the image of $\delta^N$ is precisely $\coker(D_{0,\bf{z}}^N)$. Pick $v \in (u^*NC)_{\bf{z}}$ and choose some vector field $\xi=\xi_0\cup\ldots\cup\xi_{r+q}$ on $\Sigma$ so that $\text{ev}_{\bf{z}}(\xi)=v$. We can assume without loss of generality that $\xi$ is constant on $\Sigma_i$ for all $i>0$. Then
+\[
+\delta^N(v) \equiv D_0^N(\xi_0)\cup D_1^N(\xi_1)\cup\ldots\cup D_{r+q}^N(\xi_{r+q}) \equiv D_0^N(\xi_0)\cup 0 \cup\ldots\cup 0\pmod{Im(D_{\bf{z},\bf{y}}^N)},
+\]
+so $\delta^N$ certainly lands in $\coker(D_{0,\bf{z}}^N)$. But since $\coker(D_{0,\bf{z}}^N)=(u_0^*NC)_{\bf{z}}=(u^*NC)_{\bf{z}}$, we see that $\delta^N$ maps onto $\coker(D_{0,\bf{z}}^N)$. This proves
+\[
+\coker(D^N) = \bigoplus\limits_{i=1}^{r+q} \coker(D_{i,y_i}^N) = \bigoplus\limits_{i=1}^{r+q} \coker(D_i^N).
+\]
+
+The analysis of the operators in the tangent direction is similar in essence, but the argument is complicated by the addition of variations in the domain. 
+
+Lemma~\ref{ker0} gives $\ker(D_0^T)=T_{\text{I}}\Aut(\Sigma_0)$ and $\coker(D_0^T)=0$. Restricting the kernel to those elements which vanish at marked points, we see $\ker(D_{0,\bf{z}}^T)=T_{\text{I}}\Aut(\Sigma_0,\bf{z})$. Therefore the snake lemma gives
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & T_{\text{I}}\Aut(\Sigma_0,\bf{z}) \arrow[r] & T_{\text{I}}\Aut(\Sigma_0) \arrow[r] & (u_0^*TC)_{\bf{z}} \arrow[r, "\delta_0^T"] & \coker(D_{0,\bf{z}}^T) \arrow[r] & 0
+\end{tikzcd}
+\label{snake0T}
+\end{equation}
+
+Next we apply the same process to $D_i^T$ for $1 \leq i \leq r+q$. Since constant maps are holomorphic regardless of the domain, we see immediately that $T_{\Sigma_i}\Mbar_{\sigma_i}$ is contained in $\ker(D_i^T)$; we can therefore ignore variations in the domain. Let $\hat{D}_i^T$ be the linearization with fixed domain. By Lemmas~\ref{kerClosed} and \ref{kerOpen}, $\ker(\hat{D}_i^T)$ consists of constant sections (with values in $(u_i^*TC)_{y_i}$, where $(u_i^*TC)_{y_i}=T_{p_i}C$ for $i \leq r$ and $(u_i^*TC)_{y_i}=T_{p_i}\partial C$ for $i>r$). Therefore when we restrict to those sections which vanish at a point, the kernel disappears: $\ker(\hat{D}_{i,y_i}^T)=0$ and $\ker(D_{i,y_i}^T)=T_{\Sigma_i}\Mbar_{\sigma_i}$ for all $i$. The snake lemma gives the following exact sequence:
+\begin{equation}
+\begin{tikzcd}
+0 \arrow[r] & (u_i^*TC)_{y_i} \arrow[r] & (u_i^*TC)_{y_i} \arrow[r, "\delta_i^T"] & \coker(D_{i,y_i}^T) \arrow[r] & \coker(D_i^T) \arrow[r] & 0
+\end{tikzcd}
+\label{snakeiT}
+\end{equation}
+It follows that $\delta_i^T=0$ and $\coker(D_{i,y_i}^T)=\coker(D_i^T)$.
+
+Before analyzing $D^T$, we first examine the linearization $\hat{D}^T$ with fixed domain. As with $D^N$, we can split sections which vanish at nodal points and $(0,1)$-forms to see
+\[
+\ker(\hat{D}_{\bf{z},\bf{y}}^T) = \ker(D_{0,\bf{z}}^T) \oplus \ker(\hat{D}_{1,y_1}^T) \oplus \ldots \oplus \ker(\hat{D}_{r+q,y_{r+q}}^T) = T_{\text{I}}\Aut(\Sigma_0,\bf{z})
+\]
+and
+\[
+\coker(\hat{D}_{\bf{z},\bf{y}}^T) = \coker(D_{0,\bf{z}}^T) \oplus \coker(\hat{D}_{1,y_1}^T) \oplus \ldots \oplus \coker(\hat{D}_{r+q,y_{r+q}}^T).
+\]
+If $\hat{D}^T(\xi_0 \cup\ldots\cup \xi_{r+q})=0$ then $\hat{D}_i^T(\xi_i)=0$ for each $i$, so $\ker(\hat{D}^T)=\ker(D_0^T)=T_{\text{I}}\Aut(\Sigma_0)$. Therefore applying the snake lemma to diagram~(\ref{diagDecomp}) with $S=\Sigma$, $E=u^*TC$, and $A=\hat{D}^T$ yields the following exact sequence:
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+0 \arrow[r] & T_{\text{I}}\Aut(\Sigma_0,\bf{z}) \arrow[r] & T_{\text{I}}\Aut(\Sigma_0) \arrow[r] & (u^*TC)_{\bf{z}}
+\\
+& \arrow[r, "\delta^T"] & \coker(D_{0,\bf{z}}^T) \oplus \bigoplus\limits_{i=1}^{r+q} \coker(\hat{D}_{i,y_i}^T) \arrow[r] & \coker(\hat{D}^T) \arrow[r] & 0
+\end{tikzcd}
+\label{snakeT}
+\end{equation}
+But we can see (using an argument similar to that used for $D^N$) that the image of $\delta^T$ is precisely $\coker(D_{0,\bf{z}}^T)$, so the first half of the diagram is the same as sequence~(\ref{snake0T}). Therefore 
+\[
+\coker(\hat{D}^T) = \bigoplus\limits_{i=1}^{r+q} \coker(\hat{D}_{i,y_i}^T) = \bigoplus\limits_{i=1}^{r+q} \coker(D_i^T).
+\]
+Finally, we must determine how varying the domain changes the linearization. Note that we restrict to the nodal stratum $\S$ because we wish to examine only those maps with main component $(u_0,\Sigma_0)$. Moreover, varying the domain within $\S$ only changes the constant domains and the choices of marked points along the main component, so $T_\Sigma\S$ is contained in $\ker(D^T)$. Therefore $\ker(D^T)=\ker(\hat{D}^T) \oplus T_\Sigma\S$ and  $\coker(D^T)=\coker(\hat{D}^T)$. All that remains is to observe that the identification $\ker(D^T)=\ker(\hat{D}^T) \oplus T_\Sigma\S$ is really just a splitting of the following short exact sequence:
+\[
+\begin{tikzcd}
+0 \arrow[r] & T_{\text{I}}\Aut(\Sigma_0) \arrow[r] & T_\Sigma\Nbar \arrow[r] & T_\Sigma\S \arrow[r] & 0
+\end{tikzcd}
+\]
+Therefore $\ker(D^T)=T_\Sigma\Nbar$.
+
+Finally, we observe that because $\ker(D^T)=0$ and $\ker(D^N)=0$, we must have $\ker(D)=0$ and hence $\coker(D)=\coker(D^T) \oplus \coker(D^N)$.
+\end{proof}
+\end{proposition}

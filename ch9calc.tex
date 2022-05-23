@@ -1,0 +1,128 @@
+\section{Calculation} \label{calcS}
+
+To compute the contribution $C(g,h)$ of degree one covers of the main component $(\Sigma_0,u_0)$ to type $(g,h)$ Gromov-Witten invariants, we need to count those maps which can be perturbed in the sense of \cite{rt}. More specifically, we fix a generic section $\nu$ of the bundle $\mathcal{E}$ of $(0,1)$-forms over $\Nbar$ and let $\ov{\nu}$ be its projection to $Ob$. The contribution of $\Nbar$ to $C(g,h)$ is the number of maps $P=(\Sigma,u) \in \Nbar$ for which there exists a perturbation $P_\tau$ which satisfies $\delbar_J(P_\tau)=t\ov{\nu}(P_\tau)$, for all small $t>0$.
+
+Let $\alpha$ be the (linear) section of $\pi_L^*Ob$ from Lemma~\ref{lot}, and let $Ob^F$ be the complement of its image $\im(\pi_L \circ \alpha)$ in Ob. 
+\begin{equation}
+\begin{tikzcd}
+\Omega^{0,1}(\Nbar) \arrow[r, "\pi_{Ob}"] & Ob \arrow[d] & \pi_{\L}^*Ob \arrow[l, "\pi_{\L}"] \arrow[d]
+\\
+& \Nbar \arrow[ul, bend left, dashed, "\nu"] \arrow[u, bend left, dashed, "\ov{\nu}"] & \L \arrow[l, "\pi_{\L}"] \arrow[u, bend left, dashed, "\alpha"]
+\end{tikzcd} \label{diagram}
+\end{equation}
+By Lemma~\ref{lot}, a map $P\in\Nbar$ perturbs precisely when it satisfies the following two conditions:
+\begin{enumerate}[(i)]
+\item $\ov{\nu}(P)$ lies in $\im(\pi_L \circ \alpha)$, and
+\item the projection of $\ov{\nu}(P)$ to the factor $u_0^*TL \otimes_\R \E_{(g_i,h_i)}^*$ corresponding to any boundary ghost is positive.
+\end{enumerate}
+We will show that the positivity condition is irrelevant because we can build a generic non-vanishing section over factors with boundary ghosts. The condition $\ov{\nu}(P) \in \im(\pi_L \circ \alpha)$ is equivalent to $\proj_{Ob^F}(\ov{\nu})=0$. Since $\proj_{Ob^F}(\ov{\nu})$ is a generic section of $Ob^F$, the contribution is the count of the zero locus of a generic section of $Ob^F$.
+
+\begin{remark} \label{dimFinZeros}
+One function of gluing parameters is to fix the dimension problem. Let $\tilde{g}=2g+h-1$, so the obstruction bundle has real rank $3\tilde{g}$ over every cell. If a partition $\lambda$ has $r$ interior ghosts and $q$ boundary ghosts, then $\dim_\R(\Nbar_\lambda)=3\tilde{g}-(2r+q)$. However, since $2r+q$ is precisely the rank of the bundle of gluing parameters $\L_\lambda$, the bundle $Ob_\lambda^F$ has rank equal to the dimension of the base. Therefore, a generic section of this bundle has a finite number of zeros.
+
+We stipulate that our section be non-vanishing along factors corresponding to boundary ghosts, which leaves only factors of the form $u_0^*TM \otimes_\C \E_{g_i}^*$. Since we will specify boundary conditions for $u_0^*TM \arr \Sigma_0$ and $\E_{g_i}^* \arr \Mbar_{g_i,1}$ has no codimension one boundary, we will eliminate any ambiguity arising from the choice of section.
+\end{remark}
+
+Proposition~\ref{calc} contains the bulk of the calculation; it applies when we count ordered constant branches. Corollary~\ref{perm} addresses the issue of permuting ghost branches.
+
+\begin{remark}
+The calculation in Proposition~\ref{calc} is essentially the same as that done in \cite{pand} and \cite{niuZinger}, but expressed differently. Because our curves have boundary, we write everything in terms of sections of the obstruction bundle rather than Chern classes. 
+\end{remark}
+
+\begin{proposition} \label{calc}
+The contribution of degree one covers of $(\Sigma_0,u_0)$ with ordered ghost branches is
+\[
+\widetilde{C}(g,1) = \sum\limits_{g_1+\ldots+g_r=g} \prod\limits_{i=1}^r \left( \df{1}{2}\mu(N_0,N_0^{(\R)}) \cdot \alpha_{g_i} \right),
+\]
+where
+\[
+\alpha_{g_i} = \displaystyle\int_{\Mbar_{g_i,1}} c_{g_i}(\E_{g_i})c_{g_i-1}(\E_{g_i}) \left( \sumto{l=0}{g_i-1} (-1)^l c_l(\E_{g_i})\psi_{g,1}^{g_i-1-l} \right)
+\]
+for $\psi_{g,1}$ the first Chern class of the cotangent line over $\Mbar_{g,1}$. 
+The contribution for $h>1$ is zero.
+\begin{proof}
+What is written below applies if we first pass to a smooth cover of each orbifold. Since each space of domains has a finite smooth cover, we can ignore the orbifold structure entirely.
+
+We will construct a generic section $\rho$ of $Ob^F$ which is non-vanishing on each cell with boundary ghosts. In essence, this is possible because gluing a ghost along the boundary of the main component always yields a factor of $S^1$, which forces part of the obstruction bundle to be trivial. After eliminating the cells with boundary ghosts, the remaining contribution is more straightforward because all interior ghosts live in moduli spaces of closed curves (and in particular, the positivity criterion for gluing parameters does not apply).
+
+The exclusion of boundary ghosts means that curves of type $(g,h)$ for $h>1$ cannot contribute. Moreover, the contribution arising from interior ghosts is very closely related to the corresponding contribution for degree one covers of a sphere. That is, we can separate the contribution coming from the factors $u_0^*TM \arr \Sigma_0$ and $\E_{g_i}^* \arr \Mbar_{g_i,1}$ of the obstruction bundle. The analysis of this second factor is slightly complicated, but it is essentially identical to that presented in \cite{pand}. On the other hand, the bundle $u_0^*TM \arr \Sigma_0$ is relatively easy to handle; we merely see a Maslov index instead of the Chern number we would get in the closed case.
+
+We now proceed  the details of the proof. 
+We computed the obstruction bundle $Ob$ in Proposition~\ref{ob} and bundle $\L$ of gluing parameters in Lemma~\ref{glue}. Let $\alpha$ be the leading order term from Lemma~\ref{lot}. Its image in $Ob_\lambda$ is 
+\begin{equation}
+Im(\pi_{\L_\lambda} \circ \alpha_\lambda) = \left( \bigoplus\limits_{i=1}^r T\Sigma_0 \boxtimes_\C F_{g_i}^\perp \right) \oplus \left( \bigoplus\limits_{i=r+1}^{r+q} T\partial\Sigma_0 \boxtimes_\R F_{g_i,h_i}^\perp \right), \label{imAlpha}
+\end{equation}
+where $F_{g_i}^\perp$ is the complex rank $1$ complement of the bundle generated by $\zeta_{y_i}=0$ in $\E_{g_i}^*$ and $F_{g_i,h_i}^\perp$ is the real rank $1$ complement of the bundle generated by $\zeta_{y_i}=0$ in $\E_{g_i,h_i}^*$. Then $Ob_\lambda^F$ is the complement of~(\ref{imAlpha}).
+
+Whenever a partition $\lambda$ has ghosts along the boundary, the corresponding cell $\Nbar_\lambda$ has factors of the form $S^1 \times \Mbar_{\sigma_{\lambda,i}}$ for $\sigma_{\lambda,i}=((g_i,h_i),0,(1,0,\ldots,0))$. In general a moduli space of open curves, such as $\Mbar_{\sigma_{\lambda,i}}$, may have codimension one boundary (meaning that the zero count may vary from one section to the next). However, we will use $S^1$ to construct a non-vanishing section for such a factor, which eliminates any ambiguity in the zero count of a section.
+
+We consider each factor of $Ob$ separately. First we decompose the tangent bundles $TM|_{\Sigma_0}$ and $TL|_{\partial\Sigma_0}$. We can split into directions tangent and normal to the curve. Because the normal bundle is a complex rank two bundle over a surface, we can split off a trivial line bundle. Therefore, we can write
+\begin{align*}
+TM|_{\Sigma_0} & = V_1 \oplus V_2 \oplus V_3
+\\
+TL|_{\partial\Sigma_0} & = V_1^{(\R)} \oplus V_2^{(\R)} \oplus V_3^{(\R)},
+\end{align*}
+where $V_1=T\Sigma_0$, $V_j^{(\R)}=V_j \cap TL$, and $(V_3,V_3^{(\R)})$ is a trivial bundle pair.
+
+Pick generic sections $v_1$ of $V_1$, $v_2$ and $\tilde{v}_2$ of $V_2$, and $v_3$ of $V_3$ so that
+\begin{enumerate}[(i)]
+\item $v_1$, $v_2$, and $\tilde{v}_2$ have pairwise disjoint zero loci,
+\item $v_3$ is non-vanishing,
+\item the restriction of each section to $\partial\Sigma_0$ lands in the totally real sub-bundle and is non-vanishing as a section of that bundle.
+\end{enumerate}
+The first condition is generic for dimension reasons. It is possible to insist that the projections onto the real sub-bundles be non-vanishing because every (orientable) bundle over $\partial\Sigma_0 \cong S^1$ is trivial. Observe that the zero loci of $v_2$ and $\tilde{v}_2$ are Poincar\'{e} dual to $\tfrac12\mu(N_0,N_0^{(\R)})$.
+
+In the case $q>0$, take any index $i>r$ corresponding to an open ghost. Then the $i^{\text{th}}$ factor of $Ob$ is
+\[
+u_0^*TL \boxtimes_\R \E_{g_i,h_i}^*.
+\]
+By Proposition~\ref{eSquared} it is possible to choose generic sections $\eta_{i,1},\eta_{i,2},\eta_{i,3}$ of $\E_{g_i,h_i}^*$ so that $\eta_{i,2}$ and $\eta_{i,3}$ have disjoint zero loci \footnote{Technically, choosing sections of duals of Hodge bundles is somewhat complicated because they must match along cell intersections. One way to resolve this issue would be recognize each domain modeled on $\lambda$ as an element of $\Mbar_{(g,h),0,\vec{0}}$ using arguments similar to those in Lemma~\ref{collisionModuli}.}. The section
+\[
+\rho_{\lambda,i} = (v_1|_{\partial\Sigma_0} \boxtimes_\R \proj_{F_{g_i,h_i}}(\eta_{i,1})) \oplus (v_2|_{\partial\Sigma_0} \boxtimes_\R \eta_{i,2}) \oplus (v_3|_{\partial\Sigma_0} \boxtimes_\R \eta_{i,3})
+\]
+of the $i^{\text{th}}$ factor of $Ob^F$ is non-vanishing. Picking any generic sections of the other factors of $Ob^F$ will yield a non-vanishing section of $Ob^F$ over $\Nbar_\lambda$. It follows that the contribution from $\Nbar_\lambda$ is zero whenever there are open ghosts.
+
+We have now shown that the total contribution from $\Nbar$ is equal to the count of perturbable maps in $\Nbar$ with only closed ghosts. If $h>1$ then every partition of $(g,h)$ has at least one open ghost, so the contribution is zero except when $h=1$.
+
+We are left with partitions of the form $\lambda=(g_1,\ldots,g_r)$; maps modeled on these partitions have only closed ghosts. But now the complicated part of the computation reduces to the case of closed invariants. We can choose generic sections $\eta_{i,1},\eta_{i,2},\eta_{i,3}$ of $E_{g_i}$ so that if $\zeta_{i,j}=\proj_{F_{g_j}}(\eta_{i,j})$ and $\zeta_{i,j}^\perp=\proj_{F_{g_j}^\perp}(\eta_{i,j})$, then
+\begin{enumerate}[(i)]
+\item $Z(\eta_{i,2}) \cap Z(\eta_{i,3}) = \emptyset$,
+\item $Z(\zeta_{i,1}) \cap Z(\zeta_{i,2}^\perp) \cap Z(\eta_{i,3}) = \emptyset$, and
+\item $Z(\zeta_{i,1}) \cap Z(\zeta_{i,2}) \cap Z(\eta_{i,3})$ is Poincar\'{e} dual to $\alpha_{g_i}$.
+\end{enumerate}
+The first two conditions are made possible by Proposition~\ref{eSquared}. The last condition is a result of the techniques of \cite{pand} and \cite{niuZinger} (this is where it is crucial to observe that all ghosts are closed, so existing techniques apply).
+
+We assemble this data to build a generic section $\rho$ of $Ob^F$ whose restriction to the $\lambda$-cell is the following:
+\[
+\rho_{\lambda,i} = (v_1 \boxtimes_\R \zeta_{i,1}) \oplus (v_2 \boxtimes_\R \zeta_{i,2}) \oplus (\tilde{v}_2 \boxtimes_\R \zeta_{i,2}^\perp) \oplus (v_3 \boxtimes_\R \eta_{i,3}).
+\]
+Then the zero locus of $\rho$ is Poincar\'{e} dual to 
+\[
+\prod\limits_{i=1}^r \left( \df{1}{2}\mu(N_0,N_0^{(\R)}) \cdot \alpha_{g_i} \right).
+\]
+Finally, if we choose these sections carefully so that they agree along cell intersections, we can compute the entire contribution of $\Nbar$ by adding across partitions, as in \cite{pand} and \cite{niuZinger}.
+\end{proof}
+\end{proposition}
+
+\begin{corollary} \label{perm}
+Fix $g \geq 0$ and let $\Lambda_{c}$ be the set of partitions of $(g,1)$ with only closed ghosts. Then the contribution of degree one covers of a disk to Gromov-Witten invariants of type $(g,1)$ is
+\[
+C(g,1) = \sum\limits_{\lambda \in \Lambda_c} \df{1}{|\Aut(\lambda)|} \prod\limits_{i=1}^r \left( \df{1}{2}\mu(N_0,N_0^{(\R)}) \cdot \alpha_{g_i} \right).
+\]
+The generating function is
+\[
+\sumto{g=0}{\oo} C(g,1)t^{2g-1} = \left( \df{\sin(t/2)}{t/2} \right)^{-1}.
+\]
+\end{corollary}
+
+\begin{corollary} \label{zero}
+If $h>1$, then the contribution $C(g,h)$ is zero.
+\end{corollary}
+
+\begin{remark} \label{doubleCt}
+Suppose that $L$ is the fixed locus of an anti-symplectic involution on $M$.  Then the Schwarz reflection principle allows us to double maps, bundles, and sections, as in Section~3.3.3 of \cite{katzLiu}. These doubled maps have no boundary, which allows us to make sense of the contribution using formal properties of characteristic classes. If we decompose $TM|_{\Sigma_0}$ as in the proof of Proposition~\ref{calc}, then the contribution of the $i^{\text{th}}$ factor is
+\[
+\df{1}{2}\mu(N_0,N_0^{(\R)}) \cdot \alpha_{g_i} = \#Z(v_2)\alpha_{g_i} = \df{1}{2}c_1(V_2^{(\C)})\alpha_{g_i} = \df{1}{2}c_1(N_0^{(\C)})\alpha_{g_i}
+\]
+(cf. \cite{niuZinger}).
+\end{remark}

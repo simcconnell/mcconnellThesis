@@ -1,0 +1,108 @@
+\section{Introduction} \label{intro}
+
+In essence, Gromov-Witten invariants are counts of holomorphic curves. In the closed case (i.e., where curves do not have boundary), these invariants can be defined as integrals over moduli spaces of maps. These curve counts generally take values in $\Q$ (rather than $\Z$) for two reasons: first, that underlying domains may have automorphisms, and second, that some holomorphic maps factor through non-trivial branched covers of Riemann surfaces.
+
+Spaces of domains are well understood: domains without boundary are described in \cite{harris} and \cite{mumford}, and domains with boundary are described in \cite{katzLiu} and \cite{liu}. This knowledge is enough to count simple maps in many cases by showing that they comprise an oriented manifold of dimension zero (see \cite{msBig}). However, the contributions of multiply covered curves are degenerate in the sense that moduli spaces of such maps are not of the expected dimension. One way to compute these contributions is via obstruction bundles. The fiber of the obstruction bundle over a moduli space of curves is the cokernel of the linearization of the $\delbar$ operator. If the rank of this bundle (or some relative of it) is equal to the dimension of the base, one may determine the contribution of the moduli space to Gromov-Witten invariants by computing the Euler number of the bundle (again taking values in $\Q$ because the spaces we consider may be orbifolds).
+
+The link between Gromov-Witten invariants and obstruction bundles is based on Ruan-Tian perturbations (described in \cite{rt}). Rather than studying the holomorphic curve equation $\delbar_J(u)=0$, we study the perturbed equation $\delbar_J(u)=\nu$. The contribution of degree one covers of a curve $C$ (maps which are obtained by adding constant components to $C$) is precisely the count of those curves which perturb to a $t\nu$-holomorphic curve for all small $t$.
+
+Open Gromov-Witten invariants are similar to their closed counterparts, but we allow domains to have boundary. For a thorough treatment of moduli spaces of open curves, see \cite{liu}. Two new issues arise when counting curves with boundary. The first problem is that of orientation. We do not address this rather thorny obstacle to defining invariants. Under suitable hypotheses (as in \cite{ortn}), the moduli space of open curves is orientable.
+
+The second problem in the open case is that moduli spaces of domains may have codimension one boundary strata. In particular, the techniques used in \cite{pand} may fail because of this boundary. Indeed, suppose that $E$ is a vector bundle over an oriented manifold $X$. If $X$ is closed, then the Euler class of $E$ is the Poincar\'{e} dual of the zero locus of a generic section of $E$, and in the case $\rk(E)=\dim(X)$ this zero locus is a finite number points whose signed count is independent of the choice of section. This argument fails in the case where $X$ has boundary, as the number of zeros in a generic section may vary. The goal of this thesis is to solve this problem by adapting the techniques of \cite{pand}.
+
+\subsection{Statement of Results} \label{resultsS}
+
+We compute the contribution $C(g,h)$ of degree one covers of (regular, pseudoholomorphic, embedded) disks to Gromov-Witten invariants of type $(g,h)$ in a Calabi-Yau $3$-fold (cf. \cite{pand}).
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\def\r{1}
+\def\h{1}
+\def\w{0.6}
+\def\d{5}
+
+\coordinate (c2) at (0,0);
+\coordinate (im) at (\d,0);
+
+\disk[](c2)(\r)(\r)
+
+\coordinate (LNode2) at ($(c2)+(-\r,0)$);
+\openGhost[](LNode2)(\w)(\h)(1)(left);
+\begin{scope}[shift={(LNode2)}]
+	\addGenus[](-1*\w,0.5*\h)(0)(0.25);
+\end{scope}
+
+\coordinate (RNode2) at ($(c2)+(0.6*\r,0.8*\r)$);
+\closedGhost[](RNode2)(-30)(\w)(\h)(2);
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\coordinate (f) at ($0.5*(c2)+0.5*(im)$);
+\draw [->] ($(f)+(-1,0)$) to [bend left] ($(f)+(1,0)$);
+\node at ($(f)+(0,0.5)$) {$u$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\disk[](im)(\r)(\r)
+
+\coordinate (LNodeI) at ($(im)+(-\r,0)$);
+\node at (LNodeI) {$\bullet$};
+
+\coordinate (RNodeI) at ($(im)+(0.6*\r,0.8*\r)$);
+\node at (RNodeI) {$\bullet$};
+
+\end{tikzpicture}
+\caption{A degree one cover of a disk.}
+\end{figure}
+We show that it is possible to define a contribution despite the codimension one boundary strata in the moduli space because it is always possible to construct a non-vanishing section of the obstruction bundle near these problematic strata. By relating the algebro-geometric techniques of \cite{pand} and \cite{niuZinger} to explicit sections of appropriate bundles, we avoid entirely the issue of defining characteristic classes of bundles over spaces with boundary.
+
+We first prove a special case in Section~\ref{11s} in order to illustrate the main principles.
+
+{
+\renewcommand{\thetheorem}{\ref{calc11}}
+\begin{theorem}
+The contribution of degree one covers of a disk $\Sigma_0$ to type $(1,1)$ Gromov-Witten invariants is
+\[
+C(1,1) = \df{1}{2} \mu(T\Sigma_0,T\partial\Sigma_0) \cdot \chi(\E_1),
+\]
+where $\E_1$ is the Hodge bundle for genus $1$ curves.
+\end{theorem}
+\addtocounter{theorem}{-1}
+}
+
+In the remaining sections we consider the general case and prove the following theorems (stated slightly differently here for the sake of clarity; cf. Proposition~\ref{calc} and Corollaries~\ref{perm} and \ref{zero}).
+
+\begin{theorem}
+The contribution of degree one covers of a disk to Gromov-Witten invariants of genus $g$ with $h$ boundary components is zero whenever $h>1$.
+\end{theorem}
+
+\begin{theorem}
+The contribution $C(g,1)$ of degree one covers of a disk to Gromov-Witten invariants of genus $g$ with $1$ boundary component is given by the generating function
+\[
+\sumto{g=0}{\oo} C(g,1)t^{2g-1} = \left( \df{\sin(t/2)}{t/2} \right)^{-1}.
+\]
+\end{theorem}
+
+\begin{remark}
+We expect that these techniques will extend to the case where the main component is not a disk. We predict a similar vanishing result: the contribution of degree one covers should be zero except when the domains of the cover and the main component have the same number of boundary components. The contribution in the case with the same number of boundary components will again reduce to the same flavor of generating function as the closed case.
+\end{remark}
+
+\subsection{Outline}
+
+In Sections~\ref{prelim} and \ref{mainS} we include definitions, hypotheses, and standard results.
+
+Section~\ref{11s} covers the simplest non-trivial case. The main principles of the argument all appear in this section, with minimal technical detail.
+
+The remainder of this paper covers the general case. We examine moduli spaces $\Nbar$ of holomorphic maps in Section~\ref{baseS} and build an obstruction bundle $Ob$ in Section~\ref{obS}. In Sections~\ref{glueS} and \ref{lotS} we determine the relationship of this bundle to the contribution of these maps to Gromov-Witten invariants; in particular we describe a space $\L$ of gluing parameters and relate those maps which can be perturbed to a particular section $\alpha$ of $\pi_{\L}^*Ob$. Finally, we compute the contribution in Section~\ref{calcS}.
+\[
+\begin{tikzcd}
+\Omega^{0,1}(\Nbar) \arrow[r, "\pi_{Ob}"] & Ob \arrow[d] & \pi_{\L}^*Ob \arrow[l, "\pi_{\L}"] \arrow[d]
+\\
+& \Nbar \arrow[ul, bend left, dashed, "\nu"] \arrow[u, bend left, dashed, "\ov{\nu}"] & \L \arrow[l, "\pi_{\L}"] \arrow[u, bend left, dashed, "\alpha"]
+\end{tikzcd}
+\]
+
+The reader may wish to refer periodically to the list of symbols on page~\pageref{dict}.
+
+The code used to generate figures is available at \url{https://www.overleaf.com/read/bdfwpzxsfqzc}.

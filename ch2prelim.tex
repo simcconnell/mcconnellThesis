@@ -1,0 +1,152 @@
+\section{Preliminaries} \label{prelim}
+
+In this section we give basic definitions and assumptions. Most are fairly standard; we include them for the sake of completeness. Definitions and hypotheses should be consistent with \cite{katzLiu}, \cite{liu}, and \cite{ortn} in order to ensure that moduli spaces of curves are sufficiently well-behaved.
+
+We let $(M,\omega)$ be a symplectic manifold and $J$ an almost complex structure on $M$ which is tamed by $\omega$.
+
+\begin{hypothesis} \label{hypL}
+We assume that  $\dim_\R(M)=6$ and $c_1(M)=0$.
+
+We assume that $J$ is generic and that all simple $J$-holomorphic maps (below some fixed energy bound) are regular embeddings with disjoint images.
+
+We assume that $L$ is a spin Lagrangian submanifold of $M$ with Maslov class zero.
+\end{hypothesis}
+
+We endow $M$ with a metric so that a neighborhood of $L$ can be identified with $T^*L$ and $L$ is totally geodesic.
+
+\begin{hypothesis} \label{hypMain}
+We assume that $u_0:(\Sigma_0,\partial\Sigma_0)\arr(M,L)$ is an embedded disk. We assume that $u_0$ is $J$-holomorphic, that $u(\Sigma_0 \setminus \partial\Sigma_0) \cap L = \emptyset$, and that $u_0$ is regular in the sense that the linearization $D_0:\Gamma(\Sigma_0,\partial\Sigma_0;u^*TM,u^*TL)\arr\Omega^{0,1}(\Sigma,u^*TM)$ is surjective.
+\end{hypothesis}
+
+Throughout this paper we discuss degree one covers of maps satisfying Hypothesis~\ref{hypMain}.
+
+\begin{definition}
+For $U \subset \{z \in \C: \text{Im}(z) \geq 0\}$, a function $U \arr \C$ is holomorphic if it extends to a holomorphic function on an open neighborhood of $U$ in $\C$.
+\end{definition}
+
+\begin{proposition}[Schwarz Reflection Principle]
+If $f:U \arr \C$ is holomorphic in the usual sense away from $U \cap \R$ and $f(U \cap \R) \subset \R$, then $f$ is holomorphic.
+\end{proposition}
+
+\begin{lemma} \label{holFnRS}
+If $S$ is a compact Riemann surface (possibly with boundary) and $f:S \arr \C$ is holomorphic on $S$ with $f|_{\partial S} \subset \R$, then $f$ is constant.
+\end{lemma}
+
+\begin{definition} \label{modDomain}
+A compact Riemann surface $\Sigma$ is \emph{closed} if $\partial\Sigma=\emptyset$ and \emph{open} otherwise.
+
+For $g,n \in \mathbb{N}$, we denote by $\Mbar_{g,n}$ the moduli space of closed genus $g$ surfaces with $n$ marked points (see \cite{harris} and \cite{mumford}).
+
+For $g,n \in \mathbb{N}$, $h \in \Z_+$, and $\vec{m} \in \mathbb{N}^h$, we denote by $\Mbar_{(g,h),n,\vec{m}}$ the moduli space of open surfaces of topological type $(g,h)$ with $(n,\vec{m})$ marked points. More specifically, 
+\begin{itemize}
+\item $g$ is the genus,
+\item $h$ is the number of boundary components,
+\item $n$ is the number of interior marked points, and
+\item $\vec{m}=(m_1,\ldots,m_h)$, where $m_j$ is the number of marked points on the $j^{\text{th}}$ boundary component.
+\end{itemize}
+(For a complete definition of nodal curves with boundary, see Section~3 of \cite{liu}.)
+\end{definition}
+
+Observe that
+\[
+\dim_\R\Mbar_{(g,h),n,\vec{m}} = 3(2g+h-1)-3+2n+m_1+\ldots+m_h = \dim_\C\Mbar_{\tilde{g},2n+m_1+\ldots+m_h},
+\]
+where $\tilde{g}=2g+h-1$ is the genus of a doubled $(g,h)$-type curve.
+
+The following definition is from Section 3.3.3 of \cite{katzLiu}.
+
+\begin{definition} \label{cplxDouble}
+For $\Sigma$ a bordered Riemann surface, the \emph{complex double} of $\Sigma$ is a closed Riemann surface $\Sigma^{(\C)}$ equipped with
+\begin{enumerate}[(i)]
+\item an antiholomorphic involution $c:\Sigma^{(\C)}\arr\Sigma^{(\C)}$,
+\item a covering map $\pi:\Sigma^{(\C)} \arr \Sigma$ of degree two satisfying $\pi \circ c = \pi$, and
+\item an embedding $\phi:\Sigma\arr\Sigma^{(\C)}$ such that $\pi\circ\phi=\text{I}_\Sigma$.
+\end{enumerate}
+The triple $(\Sigma^{(\C)},c,\pi)$ is unique up to isomorphism.
+\end{definition}
+
+Over a space $\mathcal{B}$ of domains with smooth maps into $M$, there is a vector bundle $\mathcal{E}$ whose fiber over $u:(\Sigma,\partial\Sigma)\arr(M,L)$ is
+\[
+\mathcal{E}_u = \Omega^{0,1}(\Sigma,u^*TM)
+\]
+(see Definition~\ref{defForm} and Section~3.1 of \cite{msBig}). 
+We define a section $\delbar_J$ of this bundle by
+\[
+\delbar_J(\Sigma,u) = \df{1}{2}\left( du+J\circ du\circ j\right),
+\]
+where $j$ is the complex structure on $\Sigma$. The moduli space of $J$-holomorphic maps in $\mathcal{B}$ is the zero set of $\delbar_J$, up to automorphism (as in Section~2.1.3 of \cite{wendl}).
+
+In order to understand this moduli space, we linearize $\delbar$. We first need to explain the tangent spaces to $\mathcal{B}$ and $\mathcal{E}$. If $\M$ is space of domains, we can view $T_\Sigma\M$ as variations in the complex structure on $\Sigma$. Aside from variations in the domain, we must consider variations in $u$, which are just vector fields along the image of $u$.
+
+\begin{definition} \label{defVF}
+For a smooth Riemann surface $\Sigma$ and a smooth map $u:(\Sigma,\partial\Sigma)\arr(M,L)$, a variation in $u$ is a section in
+\[
+\Gamma(\Sigma,\partial\Sigma;u^*TM,u^*TL) = \{\xi \in \Gamma(\Sigma,u^*TM): \xi(\partial\Sigma) \subset u^*TL\}.
+\]
+(If $\partial\Sigma=\emptyset$, then this space is just $\Gamma(\Sigma,u^*TM)$.)
+
+For $\Sigma$ a nodal Riemann surface, label the smooth components $\Sigma_0,\ldots,\Sigma_r$. A variation in a smooth map $u:(\Sigma,\partial\Sigma)\arr(M,L)$ is a section $\xi=\xi_0\cup\ldots\cup\xi_r$, where $\xi_j$ is a variation in $u|_{\Sigma_j}$, such that these vector fields agree at the nodes (i.e., if two components are attached at a node $z \sim y$, then $\xi(z)=\xi(y) \in T_{u(z)}M$).
+\end{definition}
+
+\begin{definition} \label{defForm}
+For $\Sigma$ nodal with smooth components $\Sigma_0,\ldots,\Sigma_r$ and a smooth map $u:(\Sigma,\partial\Sigma)\arr(M,L)$, we define $\Omega^{0,1}(\Sigma;u^*TM)$ to be the space of forms $\nu_0 \cup \ldots \cup \nu_r$, where $\nu_j$ is a $(0,1)$-form with values in $(u|_{\Sigma_j})^*TM$. We do not impose boundary conditions or require that the forms on the components match at the nodes.
+\end{definition}
+
+For a holomorphic map $u:(\Sigma,\partial\Sigma)\arr(M,L)$, where $\Sigma$ lies in some moduli space of domains $\M$, the linearization of $\delbar$ at $u$ is the map
+\[
+D:T_\Sigma\M \oplus \Gamma(\Sigma,\partial\Sigma;u^*TM,u^*TL) \arr\Omega^{0,1}(\Sigma,u^*TM)
+\]
+given by
+\[
+D(k,\xi) = \df{1}{2}\left( J \circ df \circ k + \nabla\xi + J(f) \circ \nabla\xi \circ j + (\nabla_\xi J) \circ df \circ j \right).
+\]
+
+\begin{theorem}[Riemann-Roch]
+Assume that $S$ is a compact Riemann surface, $E \arr S$ a complex vector bundle with $F$ a totally real sub-bundle along $\partial S$, and $D$ a real linear Cauchy-Riemann operator on $E$. After completing in appropriate Sobolev norms (as Appendices~B and C of \cite{msBig}), $D$ is Fredholm with index
+\[
+\ind(D) = \rk_\C(E)\chi(S)+\mu(E,F).
+\]
+\end{theorem}
+
+\begin{remark}
+For thorough discussions of Sobolev spaces and their relevance to these arguments, see \cite{audinDamian}, \cite{dw}, \cite{liu}, and Appendices~B and C of \cite{msBig}.
+\end{remark}
+
+\begin{definition} \label{extTensor}
+Given bundles $E \arr X$ and $F \arr Y$, the \emph{exterior tensor product} of $E$ and $F$ is
+\[
+E \boxtimes F = \pi_X^*(E) \otimes \pi_Y^*(F),
+\]
+where $\pi_X:X \times Y \arr X$ and $\pi_Y:X \times Y \arr Y$ are the natural projection maps.
+\end{definition}
+
+\begin{definition} \label{relTan}
+Let $\phi_{g,n}:\mathcal{C}_{g,n} \arr \Mbar_{g,n}$ be the universal algebraic curve (see \cite{harris} and Appendix~D.6 of \cite{msBig}). 
+The \emph{relative tangent bundle} $\mathcal{T}_{g,1}$ is $\ker(d\phi_{g,1})$; its fiber over $(\Sigma,z)$ is $T_z\Sigma$.
+
+Fix $g \geq 0$, $h \geq 1$. Set $\vec{m}=(1,0,\ldots,0) \in \mathbb{N}^h$. The \emph{universal curve} $\phi_{(g,h),(0,\vec{m})}:\mathcal{C}_{(g,h),(0,\vec{m})} \arr \Mbar_{(g,h),(0,\vec{m})}$ is the real locus of the universal curve over $\Mbar_{\tilde{g},1}$ for $\tilde{g}=2g+h-1$. The \emph{relative tangent bundle} $\mathcal{T}_{(g,h),0,\vec{m}}$ is $\ker(d\phi_{(g,h),0,\vec{m}})$; its fiber over $(\Sigma,z)$ is $T_z\partial\Sigma$.
+\end{definition}
+
+\begin{definition} \label{hodge}
+Fix $\Sigma \in \Mbar_{g,0}$ for $g \geq 0$. The \emph{$(0,0)$-Dolbeault operator} is
+\[
+\delbar_\Sigma:\Gamma(\Sigma,\C) \arr \Omega^{0,1}(\Sigma,\C).
+\]
+The \emph{Hodge bundle} $\E_g \arr \Mbar_{g,0}$ is the complex rank $g$ bundle of holomorphic differentials. Its dual $\E_g^*$ is the bundle whose fiber over $\Sigma$ is $\coker(\delbar_\Sigma)$.
+
+Fix $\Sigma \in \Mbar_{(g,h),0,\vec{0}}$ for $g \geq 0$, $h \geq 1$. The \emph{$(0,0)$-Dolbeault operator} is
+\[
+\delbar_\Sigma:\Gamma(\Sigma,\partial\Sigma;\C,\R) \arr \Omega^{0,1}(\Sigma,\C).
+\]
+The \emph{Hodge bundle} $\E_{g,h}^* \arr \Mbar_{(g,h),0,\vec{0}}$ is the real rank $2g+h-1$ bundle which is the real locus of $\E_{\tilde{g}}$ for $\tilde{g}=2g+h-1$. Its dual $\E_{g,h}^*$ is the bundle whose fiber over $\Sigma$ is $\coker(\delbar_\Sigma)$.
+\end{definition}
+
+\begin{remark} \label{orbifold}
+In general, $\Mbar_{g,n}$ is an orbifold and $\E_g^*$ an orbibundle. Similarly, $\Mbar_{(g,h),(n,\vec{m})}$ is an orbifold with boundary and $\E_{g,h}^*$ an orbibundle over it. However, these spaces have finite covers which are smooth, allowing us to ignore the orbifold structure.
+\end{remark}
+
+For discussion of the following proposition, see \cite{harris} or \cite{mumford}.
+
+\begin{proposition} \label{eSquared}
+The Euler classes of the duals of the Hodge bundles satisfy $e(\E_g^*)^2=0$ and $e(\E_{g,h}^*)^2=0$.
+\end{proposition}

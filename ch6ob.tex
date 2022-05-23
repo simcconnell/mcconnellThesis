@@ -1,0 +1,190 @@
+\section{Obstruction Bundle} \label{obS}
+
+In this section we compute the obstruction bundle over each moduli space of holomorphic curves (cf. Section~5 of \cite{dw}), the fiber of which is the cokernel of the linearization. 
+Fix a topological type $(g,h)$ and let $\Nbar$ be the moduli space computed in Section~\ref{baseS}. In Lemmas~\ref{kerClosed} and \ref{kerOpen} we compute the kernels and cokernels of the linearizations over individual ghost components. In Proposition~\ref{fiber} we determine the fiber over the top stratum of each cell. Finally, in Proposition~\ref{ob} we examine the intersections of cells.
+
+\begin{lemma} \label{kerClosed}
+Suppose that $(C,\partial C)$ is a disk holomorphically embedded in $(M,L)$ and fix $p_i \in C\setminus\partial C$. Fix a closed domain $\Sigma_i$ and assume that $u_i:\Sigma_i \arr M$ is constant with value $p_i$. 
+If we decompose with respect to the tangent space splitting $T_{p_i}M \cong T_{p_i}C \oplus N_{p_i}C$, then the linearization $\hat{D}_i:\Gamma(\Sigma_i;u_i^*TM)\arr\Omega^{0,1}(\Sigma_i,u_i^*TM)$ satisfies
+\[
+\begin{array}{rclcrcl}
+\ker(\hat{D}_i^N) & \cong & N_{p_i}C & \qquad\qquad & \coker(\hat{D}_i^N) & \cong & N_{p_i}C \otimes_\C H^{0,1}(\Sigma_i)
+\\
+\ker(\hat{D}_i^T) & \cong & T_{p_i}C && \coker(\hat{D}_i^T) & \cong & T_{p_i}C \otimes_\C H^{0,1}(\Sigma_i)
+\\
+\ker(\hat{D}_i) & \cong & T_{p_i}M && \coker(\hat{D}_i) & \cong & T_{p_i}M \otimes_\C H^{0,1}(\Sigma_i).
+\end{array}
+\]
+\begin{proof}
+The arguments for $\hat{D}_i^N$ and $\hat{D}_i^T$ are identical. Let $V \arr \Sigma_i$ be a trivial bundle, equal to either $u_i^*TC$ or $u_i^*NC$ (with fiber $V_{y_i}$), and let $\hat{D}_i^V$ be the part of $\hat{D}$ which corresponds to $V$. Then the domain and codomain of $\hat{D}_i^V$ are
+\begin{align*}
+\Gamma(\Sigma_i; V) & \cong \Map(\Sigma_i;V_{y_i})
+\\
+\Omega^{0,1}(\Sigma_i;V) & \cong \Omega^{0,1}(\Sigma_i;\C) \otimes_\C V_{y_i}.
+\end{align*}
+Under this identification, the linearization is
+\begin{align*}
+\hat{D}_i(\xi_i,k_i) & = \df{1}{2} \left( \nabla\xi_i + J(u_i) \circ \nabla\xi_i \circ j_i + (\nabla_{\xi_i} J) \circ du_i \circ j_i \right) + \df{1}{2}J \circ du_i \circ k_i
+\\
+& = \delbar\xi_i.
+\end{align*}
+Thus $\ker(\hat{D}_i^V)$ is the set of holomorphic functions $\Sigma_i \arr V_{y_i}$, all of which are constant by Lemma~\ref{holFnRS}, and $\coker(\hat{D}_i^V)$ is just $V_{y_i} \otimes_\C \coker(\delbar_{\Sigma_i})$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma} \label{kerOpen}
+Suppose that $(C,\partial C)$ is a disk holomorphically embedded in $(M,L)$ and fix $p_i~\in~\partial~C$. Fix an open domain $\Sigma_i$ and assume that $u_i:(\Sigma_i,\partial\Sigma_i) \arr (M,L)$ is constant with value $p_i \in L$. 
+If we decompose with respect to compatible tangent space splittings $T_{p_i}M~\cong~T_{p_i}C~\oplus~N_{p_i}C$ and $T_{p_i}L \cong T_{p_i}\partial C \oplus N_{p_i}\partial C$, then the linearization $\hat{D}_i~:~\Gamma(\Sigma_i,\partial\Sigma_i;u_i^*TM,u_i^*TL)~\arr~\Omega^{0,1}(\Sigma_i,u_i^*TM)$ satisfies
+\[
+\begin{array}{rclcrcl}
+\ker(\hat{D}_i^N) & \cong & N_{p_i}\partial C & \qquad\qquad & \coker(\hat{D}_i^N) & \cong & N_{p_i}\partial C \otimes_\R H^{0,1}(\Sigma_i)
+\\
+\ker(\hat{D}_i^T) & \cong & T_{p_i}\partial C && \coker(\hat{D}_i^T) & \cong & T_{p_i}\partial C \otimes_\R H^{0,1}(\Sigma_i)
+\\
+\ker(\hat{D}_i) & \cong & T_{p_i}L && \coker(\hat{D}_i) & \cong & T_{p_i}L \otimes_\R H^{0,1}(\Sigma_i).
+\end{array}
+\]
+\begin{proof}
+The arguments for $\hat{D}_i^N$ and $\hat{D}_i^T$ are identical. Let $(V,V^{(\R)}) \arr (\Sigma_i,\partial\Sigma_i)$ be a trivial bundle pair, equal to either $(u_i^*TC,u_i^*T\partial C)$ or $(u_i^*NC,u_i^*N\partial C)$, with fiber $V_{y_i}$ over $\Sigma_i$ and totally real fiber $V_{y_i}^{(\R)}$ over $\partial\Sigma_i$. Let $\hat{D}_i^V$ be the part of $\hat{D}$ which corresponds to $V$. Then the domain and codomain of $\hat{D}_i^V$ are
+\begin{align*}
+\Gamma(\Sigma_i,\partial\Sigma_i; V,V^{(\R)}) & \cong \Map(\Sigma_i,\partial\Sigma_i;V_{y_i},V_{y_i}^{(\R)})
+\\
+\Omega^{0,1}(\Sigma_i;V) & \cong \Omega^{0,1}(\Sigma_i;\C) \otimes_\C V_{y_i}.
+\end{align*}
+Under this identification, the linearization is
+\begin{align*}
+\hat{D}_i(\xi_i,k_i) & = \df{1}{2} \left( \nabla\xi_i + J(u_i) \circ \nabla\xi_i \circ j_i + (\nabla_{\xi_i} J) \circ du_i \circ j_i \right) + \df{1}{2}J \circ du_i \circ k_i
+\\
+& = \delbar\xi_i.
+\end{align*}
+Thus $\ker(\hat{D}_i^V)$ is the set of holomorphic functions $(\Sigma_i,\partial\Sigma_i) \arr (V_{y_i},V_{y_i}^{(\R)})$, all of which are constant by Lemma~\ref{holFnRS}, and $\coker(\hat{D}_i^V)$ is just $V_{y_i}^{(\R)} \otimes_\R \coker(\delbar_{\Sigma_i})$.
+\end{proof}
+\end{lemma}
+
+\begin{proposition} \label{fiber}
+Fix a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$ of some topological type $(g,h)$. For $[u,\Sigma] \in \Nbar_\lambda$ with $p_i=u(z_i)$ the image of the $i^{\text{th}}$ node, the linearization satisfies
+\begin{align*}
+\ker(D) & = 0
+\\
+\coker(D) & = \left( \bigoplus\limits_{i=1}^r T_{p_i}M \otimes_\C H^{0,1}(\Sigma_i) \right) \oplus \left( \bigoplus\limits_{i=r+1}^{r+q} T_{p_i}L \otimes_\R H^{0,1}(\Sigma_i) \right).
+\end{align*}
+\begin{proof}
+We have computed most of the data in Lemmas~\ref{ker0}, \ref{kerClosed}, and \ref{kerOpen}. All that remains is to understand how the operators on each component glue together to form $D$. This follows from an argument using long exact sequences; see Proposition~\ref{nodalLin}.
+\end{proof}
+\end{proposition}
+
+\begin{proposition} \label{ob}
+Let $\N$ be the moduli space of curves of type $(g,h)$ centered around $(u_0,\Sigma_0)$. Let $\Lambda$ be the set of partitions of $(g,h)$. For $\lambda \in \Lambda$, the obstruction bundle over $\Nbar_\lambda$ is
+\[
+Ob_\lambda = \left( \bigoplus\limits_{i=1}^r u_0^*TM \boxtimes_\C \E_{g_i}^* \right) \oplus \left( \bigoplus\limits_{i=r+1}^{r+q} u_0^*TL \boxtimes_\R \E_{(g_i,h_i)}^* \right)
+\]
+(where $\E_{g_i}$ and $\E_{g_i,h_i}$ are the Hodge bundles for genus $g_i$ and type $(g_i,h_i)$ curves respectively).
+
+The obstruction bundle over $\Nbar$ is constructed by identifying fibers along intersections using Lemma~\ref{collisionModuli}. 
+For collisions of closed ghosts $1 \leq i<i' \leq r$, we identify
+\[
+\left( u_0^*TM \boxtimes_\C \E_{g_i}^* \right) \oplus \left( u_0^*TM \boxtimes_\C \E_{g_{i'}}^* \right) \cong u_0^*TM \boxtimes_\C \E_{g_i+g_{i'}}^*.
+\]
+For collisions of open ghosts $r+1 \leq i<i' \leq r+q$, we identify 
+\[
+\left( u_0^*TL \boxtimes_\R \E_{(g_i,h_i)}^* \right) \oplus \left( u_0^*TL \boxtimes_\R \E_{(g_{i'},h_{i'})}^* \right) \cong u_0^*TL \boxtimes_\R \E_{(g_i+g_{i'},h_i+h_{i'}-1)}^*.
+\]
+For interior ghosts which approach $\partial\Sigma_0$, we identify
+\[
+u_0^*TM|_{\partial\Sigma_0} \boxtimes_\C \E_{g_i}^* \cong u_0^*TL \boxtimes_\R \E_{(g_i,1)}^*.
+\]
+\begin{proof}
+By Proposition~\ref{fiber}, the kernel of the linearization at any map $u \in \N$ is zero. It follows that there exist bundles $Ob_\lambda \arr \Nbar_\lambda$ such that the fiber over any given map is precisely the cokernel of the linearization. These fibers were also computed in Proposition~\ref{fiber}. It is clear how the fibers fit together over any given cell, so all that remains is to understand cell intersections.
+
+Fix a partition $\lambda=(g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q}))$. 
+There are three basic intersection types:
+\begin{enumerate}[(I)]
+\item a collision of two closed ghosts of genus $g_i$ and $g_{i'}$ produces a closed ghost with genus $g_i+g_{i'}$,
+\item a collision of two open ghosts of toplogical type $(g_i,h_i)$ and $(g_{i'},h_{i'})$ produces an open ghost of type $(g_i~+~g_{i'}, h_i~+~h_{i'}~-~1)$, or
+\item a closed ghost of genus $g_i$ approaches $\partial\Sigma_0$ to produce an open ghost of type $(g_i,1)$.
+\end{enumerate}
+In order to understand how to identify fibers along any cell intersections, we only need to understand identifications corresponding to these three types of cell intersections (see Section~\ref{baseS}).
+
+We begin with the collision of two closed ghosts. Suppose that $(u,\Sigma) \in \Nbar_\lambda$ is a map where two closed ghosts collide. Assume without loss of generality that the colliding ghosts are $\Sigma_{r-1}$ and $\Sigma_r$, so $z_{r-1}=z_r$. Let
+\[
+\lambda' = (g_1,\ldots,g_{r-2},g_{r-1}+g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q})).
+\]
+Then there is a map $(v,\Sigma') \in \Nbar_{\lambda'}$ which represents the same curve. This means 
+\[
+\Sigma' = \Sigma_0 \cup \ldots \cup \Sigma_{r-2} \cup \Sigma_{r-1}' \cup \Sigma_{r+1} \cup \ldots \cup \Sigma_{r+q},
+\]
+where $\Sigma_i$ is attached to $\Sigma_0$ at $z_i$ and $\Sigma_{r-1}'$ is attached to $\Sigma_0$ at $z_{r-1}=z_r$. Moreover, $u$ and $v$ are identical along all the components they have in common, $(\Sigma_{r-1},\Sigma_r)$ is identified with $\Sigma_{r-1}'$ under the inclusion given by Lemma~\ref{collisionModuli}, and $u(\Sigma_{r-1})=u(\Sigma_r)=v(\Sigma_{r-1}')=p_{r-1} \in M$.
+
+It is clear that in order to identify the fibers $\coker(D_u)$ and $\coker(D_v)$, it is sufficient to check
+\[
+\coker(D_{v,r-1}) \cong \coker(D_{u,r-1}) \oplus \coker(D_{u,r}).
+\]
+Using Lemma~\ref{kerClosed}, we identify 
+\begin{align*}
+\coker(D_{u,r-1}) & \cong T_{p_{r-1}}M \otimes_\C H^{0,1}(\Sigma_{r-1})
+\\
+\coker(D_{u,r}) & \cong T_{p_{r-1}}M \otimes_\C H^{0,1}(\Sigma_r)
+\\
+\coker(D_{v,r-1}) & \cong T_{p_{r-1}}M \otimes_\C H^{0,1}(\Sigma_{r-1}').
+\end{align*}
+All that remains is to apply Lemma~\ref{collisionModuli}.
+
+Now we proceed to the collision of two open ghosts. Suppose that $(u,\Sigma) \in \Nbar_\lambda$ is a map where two open ghosts collide. Assume without loss of generality that the colliding ghosts are $\Sigma_{r+q-1}$ and $\Sigma_{r+q}$, so $z_{r+q-1}=z_{r+q}$. Let
+\[
+\lambda' = (g_1,\ldots,g_r,(g_{r+1},h_{r+1}),\ldots,(g_{r+q-2},h_{r+q-2}),(g_{r+q-1}+g_{r+q},h_{r+q-1}+h_{r+q}-1)).
+\]
+Then there is a map $(v,\Sigma') \in \Nbar_{\lambda'}$ which represents the same curve. This means 
+\[
+\Sigma' = \Sigma_0 \cup \ldots \cup \Sigma_{r+q-2} \cup \Sigma_{r+q-1}',
+\]
+where $\Sigma_i$ is attached to $\Sigma_0$ at $z_i$ and $\Sigma_{r+q-1}'$ is attached to $\Sigma_0$ at $z_{r+q-1}=z_{r+q}$. Moreover, $u$ and $v$ are identical along all the components they have in common, $(\Sigma_{r+q-1},\Sigma_{r+q})$ is identified with $\Sigma_{r+q-1}'$ under the inclusion given by Lemma~\ref{collisionModuli}, and $u(\Sigma_{r+q-1})=u(\Sigma_{r+q})=v(\Sigma_{r+q}')=p_{r+q-1} \in M$.
+
+It is clear that in order to identify the fibers $\coker(D_u)$ and $\coker(D_v)$, it is sufficient to show
+\[
+\coker(D_{v,r+q-1}) \cong \coker(D_{u,rq-+1}) \oplus \coker(D_{u,r+q}).
+\]
+Using Lemma~\ref{kerClosed}, we identify 
+\begin{align*}
+\coker(D_{u,r+q-1}) & \cong T_{p_{r+q-1}}L \otimes_\R H^{0,1}(\Sigma_{r+q-1})
+\\
+\coker(D_{u,r+q}) & \cong T_{p_{r+q-1}}L \otimes_\R H^{0,1}(\Sigma_{r+q})
+\\
+\coker(D_{v,r+q-1}) & \cong T_{p_{r+q-1}}L \otimes_\R H^{0,1}(\Sigma_{r+q-1}')
+.
+\end{align*}
+All that remains is to apply Lemma~\ref{collisionModuli}.
+
+Finally, we examine what happens when a closed ghost approaches $\partial\Sigma_0$. Take $(u,\Sigma) \in \Nbar_\lambda$ and assume without loss of generality that $z_r \in \partial\Sigma_0$. Then there is a map $(v,\Sigma') \in \Nbar_{\lambda'}$  which represents the same curve, where
+\[
+\lambda'=(g_1,\ldots,g_{r-1},(g_r,1),(g_{r+1},h_{r+1}),\ldots,(g_{r+q},h_{r+q})).
+\]
+In particular, $(u,\Sigma)$ and $(v,\Sigma')$ are identical except for the $r^{\text{th}}$ ghost branch. The $r^{\text{th}}$ branch $\Sigma_r \in \Mbar_{g_r,1}$ of $\Sigma$ is identified with the $r^{\text{th}}$ branch $\Sigma_r' \in \Mbar_{(g_r,1),0,1}$ of $\Sigma'$ under the inclusion given by Lemma~\ref{collisionModuli}. Moreover, these branches are attached at the same point $z_r \in \Sigma_0$, and they are both sent to some point $p_r=u_0(z_r) \in L$.
+
+It is evident that the only factor of the obstruction bundle which may differ over $u$ versus $v$ is the cokernel of the $r^{\text{th}}$ linearization:
+\begin{align*}
+D_{u,r}: & \Gamma(\Sigma_r;\Sigma_r \times T_{p_r}M) \arr \Omega^{0,1}(\Sigma_r,\Sigma_r \times T_{p_r}M)
+\\
+D_{v,r}: & \Gamma(\Sigma_r',\partial\Sigma_r';\Sigma_r' \times T_{p_r}M,\partial\Sigma_r' \times T_{p_r}L) \arr \Omega^{0,1}(\Sigma_r',\Sigma_r' \times T_{p_r}M).
+\end{align*}
+Since the bundles are trivial, we can identify
+\begin{align*}
+\Gamma(\Sigma_r;\Sigma_r \times T_{p_r}M) & \cong C^\oo(\Sigma_r, \C^3)
+\\
+\Omega^{0,1}(\Sigma_r,\Sigma_r \times T_{p_r}M) & \cong \Omega^{0,1}(\Sigma_r) \otimes_\C T_{p_r}M
+\\
+\Gamma(\Sigma_r',\partial\Sigma_r';\Sigma_r' \times T_{p_r}M,\partial\Sigma_r' \times T_{p_r}L) & \cong C^\oo(\Sigma_r',\partial\Sigma_r'; \C^3,\R^3)
+\\
+\Omega^{0,1}(\Sigma_r',\Sigma_r' \times T_{p_r}M) & \cong \Omega^{0,1}(\Sigma_r') \otimes_\R T_{p_r}M.
+\end{align*}
+Then the linearizations are identified with the $(0,0)$-Dolbeault operators for $\Sigma_r$ and $\Sigma_r'$, respectively. Since
+\[
+T_{p_r}M \cong \C \otimes_\R T_{p_r}L,
+\]
+all that remains is to apply Lemma~\ref{collisionModuli}:
+\begin{align*}
+T_{p_r}M \otimes_\C H^{0,1}(\Sigma_r) & \cong T_{p_r}L \otimes_\R \C \otimes_\C H^{0,1}(\Sigma_r)
+\\
+& \cong T_{p_r}L \otimes_\R H^{0,1}(\Sigma_r').
+\end{align*}
+\end{proof}
+\end{proposition}
